@@ -58,5 +58,5 @@
      (if (some? gpg-key-id)
        (cloud-target/provider gpg-key-id gpg-passphrase)
        (cloud-target/provider))
-     (provisioning-spec count))))
-:summarize-session summarize-session
+     (provisioning-spec count)
+     :summarize-session summarize-session)))

@@ -70,5 +70,5 @@
          :or {summarize-session true} options}]
    (operation/do-server-test
     (provider)
-    (provisioning-spec))))
-:summarize-session summarize-session
+    (provisioning-spec)
+    :summarize-session summarize-session)))
