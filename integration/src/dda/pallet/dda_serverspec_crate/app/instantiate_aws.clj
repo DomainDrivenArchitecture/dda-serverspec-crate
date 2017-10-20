@@ -29,7 +29,9 @@
                     :file '({:path "/root"}
                             {:path "/etc"})
                     :netcat '({:host "www.google.com" :port 80}
-                              {:host "www.google.c" :port 80 :reachable? false})})
+                              {:host "www.google.c" :port 80 :reachable? false})
+                    :package {:test {:installed? false}
+                              :nano {:installed? true}}})
 
 (defn provisioning-spec [count]
   (merge

@@ -25,10 +25,10 @@
    [dda.pallet.dda-serverspec-crate.app :as app]))
 
 (def provisioning-ip
-  "192.168.56.103")
+  "192.168.56.105")
 
 (def provisioning-user
-  {:login "jem"
+  {:login "initial"
    :password "test1234"})
 
 (def domain-config {:netstat {:sshd {:port "22"}}
@@ -36,7 +36,9 @@
                             {:path "/etc"}
                             {:path "/absent" :exist? false})
                     :netcat '({:host "www.google.com" :port 80}
-                              {:host "www.google.c" :port 80 :reachable? false})})
+                              {:host "www.google.c" :port 80 :reachable? false})
+                    :package {:test {:installed? false}
+                              :nano {:installed? true}}})
 
 (defn provider []
   (existing/provider provisioning-ip "node-id" "dda-servertest-group"))
@@ -58,7 +60,7 @@
 (defn apply-configure
   [& options]
   (let [{:keys [summarize-session]
-         :or {summarize-session true} options}]
+         :or {summarize-session true}} options]
    (operation/do-apply-configure
     (provider)
     (provisioning-spec)
@@ -67,7 +69,7 @@
 (defn test
   [& options]
   (let [{:keys [summarize-session]
-         :or {summarize-session true} options}]
+         :or {summarize-session true}} options]
    (operation/do-server-test
     (provider)
     (provisioning-spec)
