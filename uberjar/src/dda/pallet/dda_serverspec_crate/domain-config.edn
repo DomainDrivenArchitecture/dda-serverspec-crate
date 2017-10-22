@@ -1,9 +1,10 @@
-{:netstat {:sshd {:port "22"}}
+{:netstat [{:process-name "sshd" :port "11" :running? false}
+           {:process-name "sshd" :port "22"}
+           {:process-name "sshd" :port "22" :exp-proto "tcp6" :ip "::"}]
  :file [{:path "/root"}
         {:path "/etc"}
-        {:path "/absent"
-         :exist? false}]
- :package {:test {:installed? false}
-           :nano {:installed? true}}
+        {:path "/absent" :exist? false}]
  :netcat [{:host "www.google.com" :port 80}
-          {:host "www.google.c" :port 80 :reachable? false}]}
+          {:host "www.google.c" :port 80 :reachable? false}]
+ :package [{:name "test" :installed? false}
+           {:name "nano"}]}
