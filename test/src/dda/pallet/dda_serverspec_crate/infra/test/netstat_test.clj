@@ -21,13 +21,12 @@
     [pallet.actions :as actions]
     [dda.pallet.dda-serverspec-crate.infra.test.netstat :as sut]))
 
-
-(def test-config-1 {:not-running {:port "22"}
-                    :apache2 {:port "80"}
-                    :sshd {:port "22"}})
-(def test-config-2 {:not-running {:port "22"}
-                    :apache2 {:port "81"}
-                    :sshd {:port "22"}})
+(def test-config-1 {:not-running {:port "22" :ip "0.0.0.0" :exp-proto "tcp" :running? true}
+                    (keyword "apache2_tcp6_:::80") {:port "80" :ip "::" :exp-proto "tcp6" :running? true}
+                    :sshd_tcp_0.0.0.0:22 {:port "22" :ip "0.0.0.0" :exp-proto "tcp" :running? true}})
+(def test-config-2 {:not-running {:port "22" :ip "0.0.0.0" :exp-proto "tcp" :running? true}
+                    (keyword "apache2_tcp6_:::81") {:port "81" :ip "::" :exp-proto "tcp6" :running? true}
+                    :sshd_tcp_0.0.0.0:22 {:port "22" :ip "0.0.0.0" :exp-proto "tcp" :running? true}})
 
 (def input
   '({:foreign-address ":::*",
@@ -42,7 +41,7 @@
      :send-q "0",
      :user "0"}
     {:foreign-address "0.0.0.0:*",
-     :local-ip "0 0.0.0.0",
+     :local-ip "0.0.0.0",
      :local-port "22",
      :recv-q "0",
      :inode "10289",
