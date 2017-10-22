@@ -17,8 +17,8 @@
   (:require
    [schema.core :as s]
    [dda.pallet.dda-serverspec-crate.infra.fact.netcat :as netcat-fact]
-   [dda.pallet.dda-serverspec-crate.infra.core.test :as server-test]
-   ))
+   [dda.pallet.dda-serverspec-crate.infra.core.test :as server-test]))
+
 
 (def NetcatTestConfig
   {s/Keyword {:reachable? s/Bool}})

@@ -25,7 +25,8 @@
    [dda.pallet.commons.aws :as cloud-target]
    [dda.pallet.dda-serverspec-crate.app :as app]))
 
-(def domain-config {:netstat {:sshd {:port "22"}}
+(def domain-config {:netstat '({:process-name "sshd" :port "22"}
+                               {:process-name "sshd" :port "22" :exp-proto "tcp6" :ip "::"})
                     :file '({:path "/root"}
                             {:path "/etc"})
                     :netcat '({:host "www.google.com" :port 80}

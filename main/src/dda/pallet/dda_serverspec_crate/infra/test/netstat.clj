@@ -16,11 +16,13 @@
 
 (ns dda.pallet.dda-serverspec-crate.infra.test.netstat
   (:require
+    [clojure.tools.logging :as logging]
     [schema.core :as s]
     [dda.pallet.dda-serverspec-crate.infra.fact.netstat :as netstat-fact]
     [dda.pallet.dda-serverspec-crate.infra.core.test :as server-test]))
 
-(def NetstatTestConfig {s/Keyword {:port s/Str}})
+(def NetstatTestConfig {s/Keyword {:port s/Str :ip s/Str :exp-proto s/Str
+                                   :running? s/Bool}})
 
 (s/defn fact-check :- server-test/FactCheckResult
   [result :- server-test/FactCheckResult
@@ -29,16 +31,32 @@
   (if (<= (count spec) 0)
     result
     (let [elem (first spec)
-          expected-on-port (:port (val elem))
+          {:keys [port ip exp-proto running?]} (val elem)
           present-elem  (get-in considered-map [(key elem)])
-          passed? (and (some? present-elem)
-                       (= expected-on-port (:local-port present-elem)))]
-        (recur
+          {:keys [local-port local-ip proto]} present-elem
+          present-running (and
+                               (some? present-elem)
+                               running?)
+          passed? (or
+                    (and (= running? false) (= (some? present-elem) false))
+                    (and (= running? (some? present-elem))
+                       (and
+                            (= port local-port)
+                            (= ip local-ip)
+                            (= exp-proto proto))))
+          expected-settings (if present-running
+                              (str ", expected settings: port " port ", ip " ip ", protocol " exp-proto)
+                              (str ", expected: not running on port " port ", ip " ip ", protocol " exp-proto))
+          actual-settings (if present-running
+                            (str ", actual settings: port " local-port ", ip " local-ip ", protocol " proto)
+                            "")]
+      (recur
           {:test-passed (and (:test-passed result) passed?)
            :test-message (str (:test-message result) "test netstat: " (name (key elem))
-                              ", expected port: " expected-on-port ", was running?: "
-                              (some? present-elem) ", was listening on: "
-                              (:local-port present-elem) ", passed?: " passed? "\\n")
+                              expected-settings
+                              ", was running?: " (some? present-elem)
+                              actual-settings
+                              ", passed?: " passed? "\\n")
            :no-passed (if passed? (inc (:no-passed result)) (:no-passed result))
            :no-failed (if (not passed?) (inc (:no-failed result)) (:no-failed result))}
           (rest spec)
@@ -46,7 +64,7 @@
 
 (s/defn result-to-map
   [input :- (seq netstat-fact/NetstatResult)]
-  (apply merge (map (fn [e] {(keyword (:process-name e)) e}) input)))
+  (apply merge (map (fn [e] {(keyword (str (:process-name e) "_" (:proto e) "_" (:local-ip e) ":" (:local-port e))) e}) input)))
 
 (s/defn test-netstat-internal :- server-test/TestResult
   [test-config :- NetstatTestConfig

@@ -21,8 +21,13 @@
    [dda.pallet.dda-serverspec-crate.infra :as infra]))
 
 (def ServerTestDomainConfig
-  {(s/optional-key :package) {s/Keyword {:installed? s/Bool}}
-   (s/optional-key :netstat) {s/Keyword {:port s/Str}}
+  {(s/optional-key :package) [{:name s/Str
+                               (s/optional-key :installed?) s/Bool}]
+   (s/optional-key :netstat) [{:process-name s/Str
+                               :port s/Str
+                               (s/optional-key :running?) s/Bool
+                               (s/optional-key :ip) s/Str
+                               (s/optional-key :exp-proto) s/Str}]
    (s/optional-key :file) [{:path s/Str
                             (s/optional-key :exist?) s/Bool}]
    (s/optional-key :netcat) [{:host s/Str
@@ -31,6 +36,7 @@
 
 (def InfraResult {infra/facility infra/ServerTestConfig})
 
+;TODO: extract/abstract these functions somewhere
 (defn- domain-2-filefacts [file-domain-config]
   (apply merge
          (map
@@ -59,6 +65,20 @@
              {(keyword (infra/config-to-string host port 8)) {:reachable? reachable?}})
           netcat-domain-config)))
 
+(defn- domain-2-netstattests [netstat-domain-config]
+  (apply merge
+         (map
+          #(let [{:keys [process-name port ip exp-proto running?] :or  {ip "0.0.0.0" exp-proto "tcp" running? true}} %]
+             {(keyword (str process-name "_" exp-proto "_" ip ":" port)) {:port port :ip ip :exp-proto exp-proto :running? running?}})
+          netstat-domain-config)))
+
+(defn- domain-2-packagetests [package-domain-config]
+  (apply merge
+         (map
+          #(let [{:keys [name installed?] :or  {installed? true}} %]
+             {(keyword name) {:installed? installed?}})
+          package-domain-config)))
+
 (s/defn ^:allways-validate infra-configuration :- InfraResult
   [domain-config :- ServerTestDomainConfig]
   (let [{:keys [file package netstat netcat]} domain-config]
@@ -66,11 +86,11 @@
      (merge
       (if (contains? domain-config :package)
         {:package-fact nil
-         :package-test package}
+         :package-test (domain-2-packagetests package)}
         {})
       (if (contains? domain-config :netstat)
         {:netstat-fact nil
-         :netstat-test netstat}
+         :netstat-test (domain-2-netstattests netstat)}
         {})
       (if (contains? domain-config :file)
         {:file-fact (domain-2-filefacts file)
