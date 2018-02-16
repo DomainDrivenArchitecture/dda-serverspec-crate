@@ -80,6 +80,7 @@ java -jar dda-serverspec-crate-standalone.jar serverspec.edn
   ```
 
   For testing remote server(s) please specify the targets file:
+
 ```bash
 java -jar dda-serverspec-crate-standalone.jar --targets targets.edn serverspec.edn
 ```
