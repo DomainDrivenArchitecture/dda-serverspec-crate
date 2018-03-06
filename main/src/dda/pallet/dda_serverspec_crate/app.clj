@@ -48,7 +48,8 @@
   [file-name :- s/Str]
   (ext-config/parse-config file-name))
 
-(s/defn ^:always-validate create-app-configuration :- ServertestAppConfig
+(s/defn ^:always-validate
+  create-app-configuration :- ServertestAppConfig
   [config :- infra/ServerTestConfig
    group-key :- s/Keyword]
   {:group-specific-config
