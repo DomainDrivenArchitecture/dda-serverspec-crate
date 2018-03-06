@@ -43,6 +43,7 @@ For remote tests the dda-serverspec-crate can be used from a source machine to t
 ## Usage
 1. **Download the jar-file** from the releases page of this repository (e.g. dda-serverspec-crate-x.x.x-standalone.jar)
 1. **Create the ```serverspec.edn``` configruration** file in the same folder where you saved the jar-file. The ```serverspec.edn``` file specifies the tests that are performed against the server(s). You may use the following example as a starting point and adjust it according to your own needs:
+
    ```clojure
 {:netstat [{:process-name "sshd" :port "11" :running? false}  ;check if sshd is NOT running on port 11
            {:process-name "sshd" :port "22"}         ;check if sshd is running on port 22
@@ -58,6 +59,7 @@ For remote tests the dda-serverspec-crate can be used from a source machine to t
          :expiration-days 15}]}                      ; check if certificate of url is at least 15 days valid
   ```
 3. (optional) If you want to perform the tests on a remote server, please create additionally a ```targets.edn``` file. In this file you define gainst which server(s) the tests are performed and the corresponding login information. You may use and adjust the following example config:
+
    ```clojure
 {:existing [{:node-name "target1"                      ; semantic name (keep the default or use a name that suits you)
              :node-ip "192.168.56.104"}]               ; the ip4 address of the machine to be provisioned
@@ -81,7 +83,7 @@ java -jar dda-serverspec-crate-standalone.jar serverspec.edn
 
   For testing remote server(s) please specify the targets file:
 
-```bash
+  ```bash
 java -jar dda-serverspec-crate-standalone.jar --targets targets.edn serverspec.edn
 ```
 
