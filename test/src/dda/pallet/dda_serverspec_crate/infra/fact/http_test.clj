@@ -201,7 +201,7 @@ Access-Control-Allow-Origin: *.meissa-gmbh.de
 == Info: Connection #0 to host domaindrivenarchitecture.org left intact
 ")
 
-(def fact4 {:https___domaindrivenarchitecture.org {:expiration-days 58}})
+(def fact4 {:https___domaindrivenarchitecture.org {:expiration-days (- 64 date-offset)}})
 
 ; ------------------------  tests  ------------------------------
 (deftest test-parse
