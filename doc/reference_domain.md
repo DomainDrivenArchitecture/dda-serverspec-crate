@@ -2,7 +2,6 @@
 The schema for the tests is:
 ```clojure
 (def ServerTestDomainConfig
-  (def ServerTestDomainConfig
     {(s/optional-key :package) [{:name s/Str
                                  (s/optional-key :installed?) s/Bool}]
      (s/optional-key :netstat) [{:process-name s/Str
