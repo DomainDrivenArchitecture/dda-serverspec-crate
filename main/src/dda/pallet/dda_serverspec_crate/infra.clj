@@ -28,6 +28,7 @@
    [dda.pallet.dda-serverspec-crate.infra.fact.netcat :as netcat-fact]
    [dda.pallet.dda-serverspec-crate.infra.fact.certificate-file :as certificate-file-fact]
    [dda.pallet.dda-serverspec-crate.infra.fact.http :as http-fact]
+   [dda.pallet.dda-serverspec-crate.infra.fact.iproute :as iproute-fact]
    [dda.pallet.dda-serverspec-crate.infra.fact.command :as command-fact]
    [dda.pallet.dda-serverspec-crate.infra.core.test :as core-test]
    [dda.pallet.dda-serverspec-crate.infra.test.package :as package-test]
@@ -36,6 +37,7 @@
    [dda.pallet.dda-serverspec-crate.infra.test.netcat :as netcat-test]
    [dda.pallet.dda-serverspec-crate.infra.test.certificate-file :as certificate-file-test]
    [dda.pallet.dda-serverspec-crate.infra.test.http :as http-test]
+   [dda.pallet.dda-serverspec-crate.infra.test.iproute :as iproute-test]
    [dda.pallet.dda-serverspec-crate.infra.test.command :as command-test]))
 
 ; -----------------------  fields and schemas  ----------------------
@@ -54,6 +56,7 @@
    netcat-fact/NetcatFactConfig
    (s/optional-key :certificate-file-fact) certificate-file-fact/CertificateFileFactConfig
    (s/optional-key :http-fact) http-fact/HttpFactConfig
+   (s/optional-key :iproute-fact) iproute-fact/IprouteFactConfig
    (s/optional-key :command-fact) command-fact/CommandFactConfig
    (s/optional-key :package-test) package-test/PackageTestConfig
    (s/optional-key :netstat-test) netstat-test/NetstatTestConfig
@@ -61,6 +64,7 @@
    (s/optional-key :netcat-test) netcat-test/NetcatTestConfig
    (s/optional-key :certificate-file-test) certificate-file-test/CertificateFileTestConfig
    (s/optional-key :http-test) http-test/HttpTestConfig
+   (s/optional-key :iproute-test) iproute-test/IprouteTestConfig
    (s/optional-key :command-test) command-test/CommandTestConfig      ; the expected exit code or output for specified command
    })
 
@@ -69,6 +73,11 @@
  path-to-keyword :- s/Keyword
  [path :- s/Str]
  (file-fact/path-to-keyword path))
+
+(s/defn ^:always-validate
+  ip-to-keyword :- s/Keyword
+  [ip :- s/Str]
+  (iproute-fact/ip-to-keyword ip))
 
 (s/defn ^:always-validate
  config-to-string :- s/Str
@@ -94,7 +103,7 @@
   [core-infra config]
   "dda-serverspec: setting"
   (let [{:keys [file-fact netcat-fact certificate-file-fact
-                http-fact command-fact]} config]
+                http-fact iproute-fact command-fact]} config]
     (when (contains? config :package-fact)
       (package-fact/collect-package-fact))
     (when (contains? config :netstat-fact)
@@ -107,6 +116,8 @@
       (certificate-file-fact/collect-certificate-file-fact certificate-file-fact))
     (when (contains? config :http-fact)
       (http-fact/collect-http-fact http-fact))
+    (when (contains? config :iproute-fact)
+      (iproute-fact/collect-iproute-fact iproute-fact))
     (when (contains? config :command-fact)
       (command-fact/collect-command-fact command-fact))))
 
@@ -130,6 +141,8 @@
     (certificate-file-test/test-certificate-file (:certificate-file-test config)))
   (when (contains? config :http-test)
     (http-test/test-http (:http-test config)))
+  (when (contains? config :iproute-test)
+    (iproute-test/test-iproute (:iproute-test config)))
   (when (contains? config :command-test)
     (command-test/test-command (:command-test config))))
 

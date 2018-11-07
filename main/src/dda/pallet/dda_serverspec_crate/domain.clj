@@ -19,6 +19,7 @@
    [clojure.string :as st]
    [schema.core :as s]
    [dda.config.commons.map-utils :as map-utils]
+   [dda.config.commons.schema :as schema]
    [dda.pallet.dda-serverspec-crate.infra :as infra]))
 
 (def fact-id-file infra/fact-id-file)
@@ -44,6 +45,8 @@
                                         :expiration-days s/Num}]  ;min days certificate must be valid
    (s/optional-key :http) [{:url s/Str                            ;full url e.g. http://google.com
                             :expiration-days s/Num}]              ;minimum days the certificate must be valid
+   (s/optional-key :iproute) [{:ip (s/pred schema/ipv4?)
+                              :via (s/pred schema/ipv4?)}]
    (s/optional-key :command) [{:cmd s/Str
                                :exit-code s/Num
                                (s/optional-key :stdout) s/Str}]})
@@ -136,6 +139,21 @@
              {(infra/url-to-keyword url) {:expiration-days expiration-days}})
           certificate-domain-config)))
 
+(defn- domain-2-iproutefacts [certificate-iproute-config]
+  (apply merge
+         (map
+          #(let [{:keys [ip]} %]
+             {(infra/ip-to-keyword ip)
+              {:ip ip}})
+          certificate-iproute-config)))
+
+(defn- domain-2-iproutetests [certificate-iproute-config]
+  (apply merge
+         (map
+          #(let [{:keys [ip via]} %]
+             {(infra/ip-to-keyword ip) {:via via}})
+          certificate-iproute-config)))
+
 (defn- domain-2-commandfacts [command-domain-config]
   (apply merge
          (map
@@ -157,7 +175,7 @@
 (s/defn ^:always-validate
   infra-configuration :- InfraResult
   [domain-config :- ServerTestDomainConfig]
-  (let [{:keys [file package netstat netcat certificate-file http command]} domain-config]
+  (let [{:keys [file package netstat netcat certificate-file http iproute command]} domain-config]
     {infra/facility
      (merge
       (if (contains? domain-config :package)
@@ -183,6 +201,10 @@
       (if (contains? domain-config :http)
         {:http-fact (domain-2-httpfacts http)
          :http-test (domain-2-httptests http)}
+        {})
+      (if (contains? domain-config :iproute)
+        {:iproute-fact (domain-2-iproutefacts iproute)
+         :iproute-test (domain-2-iproutetests iproute)}
         {})
       (if (contains? domain-config :command)
         {:command-fact (domain-2-commandfacts command)
