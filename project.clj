@@ -28,7 +28,8 @@
                                                       :exclusions [commons-logging]]]}}
              :test {:test-paths ["test/src"]
                     :resource-paths ["test/resources"]
-                    :dependencies [[dda/pallet "0.9.0" :classifier "tests"]]}
+                    :dependencies [[dda/pallet "0.9.0" :classifier "tests"]
+                                   [org.clojure/test.check "0.10.0-alpha3"]]}
              :uberjar {:source-paths ["uberjar/src"]
                        :resource-paths ["uberjar/resources"]
                        :aot :all
