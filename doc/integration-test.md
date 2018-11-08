@@ -73,3 +73,13 @@
 (serverspec :domain "integration/resources/package.edn"
             :targets "integration/resources/remote-key-target.edn")
 ```
+
+# iproute
+```
+(serverspec :domain "integration/resources/iproute.edn"
+            :targets "integration/resources/remote-pwd-target.edn")
+(serverspec :domain "integration/resources/iproute.edn"
+            :targets "integration/resources/localhost-target.edn")
+(serverspec :domain "integration/resources/iproute.edn"
+            :targets "integration/resources/remote-key-target.edn")
+```
