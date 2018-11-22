@@ -80,6 +80,11 @@
   (iproute-fact/ip-to-keyword ip))
 
 (s/defn ^:always-validate
+  hostname-to-ips :- [s/Str]
+  [hostname :- s/Str]
+  (iproute-fact/hostname-to-ips hostname))
+
+(s/defn ^:always-validate
  config-to-string :- s/Str
  [host :- s/Str port :- s/Num timeout :- s/Num]
  (netcat-fact/config-to-string host port timeout))

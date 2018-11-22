@@ -45,8 +45,11 @@
                                         :expiration-days s/Num}]  ;min days certificate must be valid
    (s/optional-key :http) [{:url s/Str                            ;full url e.g. http://google.com
                             :expiration-days s/Num}]              ;minimum days the certificate must be valid
-   (s/optional-key :iproute) [{:ip (s/pred schema/ipv4?)
-                              :via (s/pred schema/ipv4?)}]
+   (s/optional-key :iproute) [(letfn [(either-ip-hostname [m] (or (contains? m :ip) (contains? m :hostname)))]
+                                (s/conditional
+                                 #(contains? % :ip) {:ip (s/pred schema/ipv4?) :via (s/pred schema/ipv4?)}
+                                 #(contains? % :hostname) {:hostname s/Str :via (s/pred schema/ipv4?)}
+                                 :else (s/pred either-ip-hostname)))]
    (s/optional-key :command) [{:cmd s/Str
                                :exit-code s/Num
                                (s/optional-key :stdout) s/Str}]})
@@ -139,20 +142,26 @@
              {(infra/url-to-keyword url) {:expiration-days expiration-days}})
           certificate-domain-config)))
 
-(defn- domain-2-iproutefacts [certificate-iproute-config]
+(defn- domain-2-iproutefacts [iproute-config]
   (apply merge
          (map
-          #(let [{:keys [ip]} %]
-             {(infra/ip-to-keyword ip)
-              {:ip ip}})
-          certificate-iproute-config)))
+          #(let [{:keys [ip hostname]} %
+                 ips (if hostname (infra/hostname-to-ips hostname) [ip])]
+             (->> ips
+                  (map (fn [ip] [(infra/ip-to-keyword ip) {:ip ip}]))
+                  (into {})))
+          iproute-config)))
 
-(defn- domain-2-iproutetests [certificate-iproute-config]
+(defn- domain-2-iproutetests [iproute-config]
   (apply merge
          (map
-          #(let [{:keys [ip via]} %]
-             {(infra/ip-to-keyword ip) {:via via}})
-          certificate-iproute-config)))
+          #(let [{:keys [ip via hostname]} %
+                 ips (if hostname (infra/hostname-to-ips hostname) [ip])]
+             (->> ips
+                  (map (fn [ip] [(infra/ip-to-keyword ip)
+                                 {:via via :source (or hostname ip)}]))
+                  (into {})))
+          iproute-config)))
 
 (defn- domain-2-commandfacts [command-domain-config]
   (apply merge

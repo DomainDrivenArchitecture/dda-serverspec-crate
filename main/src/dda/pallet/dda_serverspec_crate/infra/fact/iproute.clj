@@ -23,7 +23,8 @@
     [iproute.route :as route]
     [schema.core :as s]
     [dda.config.commons.schema :as schema]
-    [dda.pallet.dda-serverspec-crate.infra.core.fact :as fact]))
+    [dda.pallet.dda-serverspec-crate.infra.core.fact :as fact])
+  (:import [java.net InetAddress]))
 
 (def fact-id-iproute ::iproute)
 
@@ -37,6 +38,15 @@
 
 (s/defn ip-to-keyword :- s/Keyword
   [ip :- s/Str] (keyword (string/replace ip #"\." "_")))
+
+(defn- ipv4? [^InetAddress a]
+  (-> a .getAddress count (= 4)))
+
+(s/defn hostname-to-ips :- [s/Str]
+  [hostname :- s/Str]
+  (->> (InetAddress/getAllByName hostname)
+       (filter ipv4?)
+       (map (fn [^InetAddress a] (.getHostAddress a)))))
 
 (s/defn build-iproute-script
   "builds the script to retrieve ip gateways"
@@ -61,7 +71,7 @@
   "returns a IprouteFactResults from the result gateway probes"
   [raw-script-results :- s/Str]
   (apply merge
-         (map parse-iproute-response
+         (map (comp parse-iproute-response string/trim)
               (string/split raw-script-results (re-pattern output-separator)))))
 
 (s/defn collect-iproute-fact

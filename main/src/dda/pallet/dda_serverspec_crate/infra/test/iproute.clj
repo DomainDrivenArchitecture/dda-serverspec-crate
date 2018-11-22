@@ -21,7 +21,8 @@
     [dda.pallet.dda-serverspec-crate.infra.fact.iproute :as iproute-fact]
     [dda.pallet.dda-serverspec-crate.infra.core.test :as server-test]))
 
-(def IprouteTestConfig {s/Keyword {:via (s/pred schema/ipv4?)}})
+(def IprouteTestConfig {s/Keyword {:via (s/pred schema/ipv4?)
+                                   :source s/Str}})
 
 (s/defn fact-check :- server-test/TestResult
   "Compare facts & expectation in order to return test-results."
@@ -31,14 +32,15 @@
   (if (<= (count spec) 0)
     result
     (let [elem (first spec)
-          expected-via (:via (val elem))
+          {expected-via :via expected-source :source} (val elem)
           fact-elem (get-in fact-map [(key elem)])
           fact-via (:via fact-elem)
           passed? (= fact-via expected-via)]
       (recur
        {:test-passed (and (:test-passed result) passed?)
         :test-message (str (:test-message result) "test host: " (name (key elem))
-                           ", expected:: via: " (pr-str expected-via)
+                           ", expected: " (pr-str expected-source)
+                           ", via: " (pr-str expected-via)
                            " - found facts:: via: " (pr-str fact-via)
                            " - passed?: " passed? "\n")
         :no-passed (if passed? (inc (:no-passed result)) (:no-passed result))

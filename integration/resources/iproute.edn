@@ -1,1 +1,2 @@
-{:iproute [{:ip "172.17.0.1" :via "172.17.0.2"}]}
+{:iproute [{:ip "1.1.1.1" :via "172.17.0.1"}
+           {:hostname "stackoverflow.com" :via "172.17.0.1"}]}

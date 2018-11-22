@@ -42,10 +42,11 @@
 
 (defn serverspec
   [& options]
-  (let [{:keys [domain targets summarize-session]
+  (let [{:keys [domain targets verbosity]
          :or {domain "integration/resources/command.edn"
               targets "integration/resources/remote-pwd-target.edn"
-              summarize-session true}} options]
+              verbosity 1}} options]
     (core-app/existing-serverspec app/crate-app
                              {:domain domain
-                              :targets targets})))
+                              :targets targets
+                              :verbosity verbosity})))
