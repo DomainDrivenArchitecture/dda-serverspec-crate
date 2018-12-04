@@ -49,3 +49,19 @@
   (testing
     "test parsing iproute output"
     (is (:result (tc/quick-check 10 prop-ipv4-parsing)))))
+
+; ------------------------  test sample  ------------------------
+
+(def script-output1
+  "151_101_129_69
+151.101.129.69 via 10.0.2.2 dev enp0s3 src 10.0.2.15 uid 0
+  cache")
+
+(def fact1
+  {:151_101_129_69 {:via "10.0.2.2"}})
+
+(deftest test-parse
+  (testing
+    "test parsing iproute output"
+    (is (= fact1
+           (sut/parse-iproute-response script-output1)))))
