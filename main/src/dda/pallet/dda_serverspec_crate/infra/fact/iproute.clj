@@ -59,10 +59,9 @@
 (s/defn parse-iproute-response :- IprouteFactResult
   "returns a IprouteFactResult from the result of a gateway probe"
   [single-script-result :- s/Str]
-  (let [result-lines (string/split single-script-result #"\n" 2)
-        result-key (first result-lines)
-        result-text (nth result-lines 1)]
+  (let [[result-key result-text] (string/split single-script-result #"\n" 2)]
     ;; iproute always tries to find multiple rules
+    ;; result-text is multiline, e.g.: "151.101.129.69 via 10.0.2.2 dev enp0s3 src 10.0.2.15 uid 0 \n    cache"
     {(keyword result-key) (-> (route/parse result-text)
                               first
                               (select-keys [:via]))}))
