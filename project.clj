@@ -6,7 +6,7 @@
   :dependencies [[dda/dda-pallet-commons "1.4.1-SNAPSHOT"]
                  [dda/dda-config-commons "1.4.2-SNAPSHOT"]
                  [dda/dda-pallet "2.2.1"]
-                 [iproute "0.1.4"]]
+                 [iproute "0.1.5"]]
   :source-paths ["main/src"]
   :resource-paths ["main/resources"]
   :repositories [["snapshots" :clojars]

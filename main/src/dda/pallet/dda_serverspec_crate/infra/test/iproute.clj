@@ -16,12 +16,19 @@
 
 (ns dda.pallet.dda-serverspec-crate.infra.test.iproute
   (:require
+    [clojure.data :as data]
     [schema.core :as s]
-    [dda.config.commons.schema :as schema]
+    [iproute.route :as route]
+    [dda.config.commons.styled-output :refer [styled]]
     [dda.pallet.dda-serverspec-crate.infra.fact.iproute :as iproute-fact]
     [dda.pallet.dda-serverspec-crate.infra.core.test :as server-test]))
 
-(def IprouteTestConfig {s/Keyword {:via (s/pred schema/ipv4?)
+(s/defn ip? [s :- s/Str] (not (empty? (route/parses s :start :ip))))
+
+(def IprouteTestConfig {s/Keyword {(s/optional-key :via) (s/pred ip?)
+                                   (s/optional-key :src) (s/pred ip?)
+                                   (s/optional-key :dev) s/Str
+                                   :version s/Int
                                    :source s/Str}})
 
 (s/defn fact-check :- server-test/TestResult
@@ -31,18 +38,21 @@
    fact-map]
   (if (<= (count spec) 0)
     result
-    (let [elem (first spec)
-          {expected-via :via expected-source :source} (val elem)
-          fact-elem (get-in fact-map [(key elem)])
-          fact-via (:via fact-elem)
-          passed? (= fact-via expected-via)]
+    (let [[fact-key expected] (first spec)
+          {:keys [source version]} expected
+          fact (get fact-map fact-key {})
+          [missed extra common] (data/diff
+                                 (select-keys expected [:via :dev :src])
+                                 (select-keys fact [:via :dev :src]))
+          passed? (empty? missed)]
       (recur
        {:test-passed (and (:test-passed result) passed?)
-        :test-message (str (:test-message result) "test host: " (name (key elem))
-                           ", expected: " (pr-str expected-source)
-                           ", via: " (pr-str expected-via)
-                           " - found facts:: via: " (pr-str fact-via)
-                           " - passed?: " passed? "\n")
+        :test-message (str (:test-message result) "test host: " source " [" (name fact-key) "]"
+                           (if-not passed? (str ", missed: " (styled (pr-str missed) :red)))
+                           (if passed?
+                             (str ", checked facts: " (pr-str common))
+                             (str ", found facts: " (styled (pr-str fact) :green)))
+                           ", passed?: " passed? "\n")
         :no-passed (if passed? (inc (:no-passed result)) (:no-passed result))
         :no-failed (if (not passed?) (inc (:no-failed result)) (:no-failed result))}
        (rest spec)

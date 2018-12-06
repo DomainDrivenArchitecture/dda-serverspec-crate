@@ -22,30 +22,42 @@
     [clojure.tools.logging :as logging]
     [iproute.route :as route]
     [schema.core :as s]
-    [dda.config.commons.schema :as schema]
     [dda.pallet.dda-serverspec-crate.infra.core.fact :as fact])
   (:import [java.net InetAddress]))
 
 (def fact-id-iproute ::iproute)
 
+(s/defn ip? [s :- s/Str] (not (empty? (route/parses s :start :ip))))
+
 (def output-separator "----- iproute output separator -----")
 
-(def IprouteFactConfig {s/Keyword {:ip (s/pred schema/ipv4?)}})
+(def IprouteFactConfig {s/Keyword {:ip (s/pred ip?) :version s/Int}})
 
-(def IprouteFactResult {:ip (s/pred schema/ipv4?)
-                      :via (s/pred schema/ipv4?)})
+(def IprouteFactResult {:ip (s/pred ip?)
+                        :version s/Int
+                        (s/optional-key :via) (s/pred ip?)
+                        (s/optional-key :src) (s/pred ip?)
+                        (s/optional-key :dev) s/Str})
 (def IprouteFactResults {s/Keyword IprouteFactResult})
 
 (s/defn ip-to-keyword :- s/Keyword
-  [ip :- s/Str] (keyword (string/replace ip #"\." "_")))
+  [ip :- s/Str]
+  (-> ip
+      (string/replace #"\." "_")
+      (string/replace #"\:" "_")
+      keyword))
 
-(defn- ipv4? [^InetAddress a]
-  (-> a .getAddress count (= 4)))
+(defn- ips-by-version [version ^InetAddress a]
+  (let [bytesize (case version
+                   4 4
+                   6 16)]
+    (-> a .getAddress count (= bytesize))))
 
 (s/defn hostname-to-ips :- [s/Str]
-  [hostname :- s/Str]
+  [hostname :- s/Str
+   version :- s/Int]
   (->> (InetAddress/getAllByName hostname)
-       (filter ipv4?)
+       (filter (partial ips-by-version version))
        (map (fn [^InetAddress a] (.getHostAddress a)))))
 
 (s/defn build-iproute-script
@@ -64,7 +76,7 @@
     ;; result-text is multiline, e.g.: "151.101.129.69 via 10.0.2.2 dev enp0s3 src 10.0.2.15 uid 0 \n    cache"
     {(keyword result-key) (-> (route/parse result-text)
                               first
-                              (select-keys [:via]))}))
+                              (select-keys [:via :src :dev]))}))
 
 (s/defn parse-iproute-script-responses :- IprouteFactResults
   "returns a IprouteFactResults from the result gateway probes"

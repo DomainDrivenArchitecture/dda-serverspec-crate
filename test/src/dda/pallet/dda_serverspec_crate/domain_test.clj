@@ -56,10 +56,10 @@
   (testing
     "test creation of infra configuration"
     (is (=  {:dda-servertest
-             {:iproute-fact {:1_1_1_1 {:ip "1.1.1.1"},
-                             :195_201_136_96 {:ip "195.201.136.96"}},
-              :iproute-test {:1_1_1_1 {:via "172.17.0.1", :source "1.1.1.1"},
-                             :195_201_136_96 {:via "172.17.0.1",:source "domaindrivenarchitecture.org"}}
+             {:iproute-fact {:1_1_1_1 {:ip "1.1.1.1" :version 4},
+                             :195_201_136_96 {:ip "195.201.136.96" :version 4}},
+              :iproute-test {:1_1_1_1 {:via "172.17.0.1", :source "1.1.1.1" :version 4},
+                             :195_201_136_96 {:via "172.17.0.1",:source "domaindrivenarchitecture.org" :version 4}}
               :package-fact nil
                :package-test {:firefox {:installed? false}}
                :netstat-fact nil

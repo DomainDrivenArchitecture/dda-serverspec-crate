@@ -81,8 +81,9 @@
 
 (s/defn ^:always-validate
   hostname-to-ips :- [s/Str]
-  [hostname :- s/Str]
-  (iproute-fact/hostname-to-ips hostname))
+  [hostname :- s/Str
+   version :- s/Int]
+  (iproute-fact/hostname-to-ips hostname version))
 
 (s/defn ^:always-validate
  config-to-string :- s/Str
