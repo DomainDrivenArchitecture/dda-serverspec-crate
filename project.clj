@@ -3,8 +3,10 @@
   :url "https://domaindrivenarchitecture.org"
   :license {:name "Apache License, Version 2.0"
             :url "https://www.apache.org/licenses/LICENSE-2.0.html"}
-  :dependencies [[dda/dda-pallet-commons "1.4.0"]
-                 [dda/dda-pallet "2.2.1"]]
+  :dependencies [[dda/dda-pallet-commons "1.4.1-SNAPSHOT"]
+                 [dda/dda-config-commons "1.4.2-SNAPSHOT"]
+                 [dda/dda-pallet "2.2.1"]
+                 [iproute "0.1.5"]]
   :source-paths ["main/src"]
   :resource-paths ["main/resources"]
   :repositories [["snapshots" :clojars]
@@ -28,7 +30,8 @@
                                                       :exclusions [commons-logging]]]}}
              :test {:test-paths ["test/src"]
                     :resource-paths ["test/resources"]
-                    :dependencies [[dda/pallet "0.9.0" :classifier "tests"]]}
+                    :dependencies [[dda/pallet "0.9.0" :classifier "tests"]
+                                   [org.clojure/test.check "0.10.0-alpha3"]]}
              :uberjar {:source-paths ["uberjar/src"]
                        :resource-paths ["uberjar/resources"]
                        :aot :all

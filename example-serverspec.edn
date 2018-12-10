@@ -1,4 +1,6 @@
-{:netstat [{:process-name "sshd" :port "11" :running? false}
+{:iproute [{:ip "1.1.1.1" :via "172.17.0.1"}
+           {:hostname "stackoverflow.com" :via "172.17.0.1"}]}
+ :netstat [{:process-name "sshd" :port "11" :running? false}
            {:process-name "sshd" :port "22" :ip "0.0.0.0" :exp-proto "tcp"}
            {:process-name "sshd" :port "22" :ip "::" :exp-proto "tcp6"}
            {:process-name "dhclient" :port "68" :ip "0.0.0.0"}]

@@ -1,0 +1,5 @@
+{:iproute [{:ip "1.1.1.1" :via "172.17.0.1"}
+           {:hostname "stackoverflow.com" :via "172.17.0.1"}
+           {:ip "2a00:1450:4001:81a:0:0:0:200e" :src "2001:0:53aa:64c:10c8:ada:fa59:9a05"}
+           {:hostname "google.com" :src "2001:0:53aa:64c:10c8:ada:fa59:9a05"}
+           {:hostname "ipv6.google.com" :dev "teredo"}]}
