@@ -1,2 +1,2 @@
 {:package [{:name "test" :installed? false}
-           {:name "curl"}]}
+           {:name "openjdk-8-jre"}]}
