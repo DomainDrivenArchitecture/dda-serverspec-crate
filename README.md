@@ -50,15 +50,15 @@ Facts are collected via ssh & bash. Test utils, needed, can be installed by usin
 
 ## Usage Summary
 
-1. **Download the jar-file** from the releases page of this repository (e.g. `curl -L -o serverspec.jar https://github.com/DomainDrivenArchitecture/dda-serverspec-crate/releases/download/1.2.1/dda-serverspec-crate-1.2.1-standalone.jar`)
+1. **Download the jar-file** from the releases page of this repository (e.g. `curl -L -o dda-serverspec-standalone.jar https://github.com/DomainDrivenArchitecture/dda-serverspec-crate/releases/download/1.2.1/dda-serverspec-standalone.jar`)
 2. Create the files `serverspec.edn` (Domain-Schema for all your tests) and `target.edn` (Schema for Targets to be provisioned) according to the reference and our example configurations. Please create them in the same folder where you've saved the jar-file. For more information about these files refer to the corresponding information below.
 3. Start testing:
 ```bash
-java -jar dda-serverspec-crate-standalone.jar --targets targets.edn serverspec.edn
+java -jar dda-serverspec-standalone.jar --targets targets.edn serverspec.edn
 ```
 If you want to test on your localhost you don't need a target config.
 ```bash
-java -jar dda-serverspec-crate-standalone.jar serverspec.edn
+java -jar dda-serverspec-standalone.jar serverspec.edn
 ```
 
 ## Configuration
