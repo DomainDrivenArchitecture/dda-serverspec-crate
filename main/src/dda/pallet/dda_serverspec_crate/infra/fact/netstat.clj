@@ -18,6 +18,7 @@
   (:require
     [schema.core :as s]
     [clojure.string :as cs]
+    [pallet.actions :as actions]
     [dda.pallet.dda-serverspec-crate.infra.core.fact :refer :all]))
 
 (def fact-id-netstat ::netstat)
@@ -58,4 +59,11 @@
   "Defines the netstat resource.
    This is automatically done serverstate crate is used."
   []
-  (collect-fact fact-id-netstat '("netstat" "-tulpen") :transform-fn parse-netstat))
+  (collect-fact
+    fact-id-netstat
+    (str "netstat -tulpen" "; echo ''")
+    :transform-fn parse-netstat))
+
+(s/defn install
+  []
+  (actions/package "net-tools"))

@@ -50,7 +50,7 @@
 (def ServerTestConfig
   {(s/optional-key :package-fact) s/Any       ; parsed result of "netstat -tulpen". Any is ignored.
    (s/optional-key :netstat-fact) s/Any       ; parsed result of "dpkg -l". Any is ignored.
-   (s/optional-key :file-fact)                ; parsed result of "find [path] -prune -printf \"%p'%s'%u'%g'%m'%y'%c'%t'%a\\n\"
+   (s/optional-key :file-fact)                ; parsed result of 'find [path] -prune -printf \"%p'%s'%u'%g'%m'%y'%c'%t'%a\\n\'
    file-fact/FileFactConfig
    (s/optional-key :netcat-fact)              ; parsed result of "nc [host] -w [timeout] && echo $?"
    netcat-fact/NetcatFactConfig
@@ -65,8 +65,8 @@
    (s/optional-key :certificate-file-test) certificate-file-test/CertificateFileTestConfig
    (s/optional-key :http-test) http-test/HttpTestConfig
    (s/optional-key :iproute-test) iproute-test/IprouteTestConfig
-   (s/optional-key :command-test) command-test/CommandTestConfig      ; the expected exit code or output for specified command
-   })
+   (s/optional-key :command-test) command-test/CommandTestConfig})      ; the expected exit code or output for specified command
+
 
 ; -----------------------  functions and methods  ------------------------
 (s/defn ^:always-validate
@@ -131,7 +131,9 @@
   [dda-crate config]
   "dda-serverspec: install"
   (when (contains? config :http-fact)
-    (http-fact/install)))
+    (http-fact/install))
+  (when (contains? config :netstat-fact)
+    (netstat-fact/install)))
 
 (s/defmethod core-infra/dda-test facility
   [dda-crate config]
