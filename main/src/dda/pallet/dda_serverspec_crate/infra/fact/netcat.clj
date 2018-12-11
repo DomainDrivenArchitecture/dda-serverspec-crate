@@ -17,6 +17,7 @@
 (ns dda.pallet.dda-serverspec-crate.infra.fact.netcat
   (:require
    [schema.core :as s]
+   [pallet.actions :as actions]
    [dda.pallet.dda-serverspec-crate.infra.core.fact :refer :all]))
 
 ; -----------------------  fields & schemas  ------------------------
@@ -87,3 +88,7 @@
      "; " (map #(build-netcat-script %) netcat-configs))
     "; echo -n ''")
    :transform-fn parse-netcat))
+
+(s/defn install
+  []
+  (actions/package "netcat"))

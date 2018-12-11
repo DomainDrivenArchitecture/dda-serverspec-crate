@@ -133,7 +133,11 @@
   (when (contains? config :http-fact)
     (http-fact/install))
   (when (contains? config :netstat-fact)
-    (netstat-fact/install)))
+    (netstat-fact/install))
+  (when (contains? config :netcat-fact)
+    (netcat-fact/install))
+  (when (contains? config :iproute-fact)
+    (iproute-fact/install)))
 
 (s/defmethod core-infra/dda-test facility
   [dda-crate config]

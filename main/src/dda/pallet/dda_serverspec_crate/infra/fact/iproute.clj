@@ -20,6 +20,7 @@
     [clojure.edn :as edn]
     [clojure.string :as string]
     [clojure.tools.logging :as logging]
+    [pallet.actions :as actions]
     [iproute.route :as route]
     [schema.core :as s]
     [dda.pallet.dda-serverspec-crate.infra.core.fact :as fact])
@@ -95,3 +96,7 @@
      "; " (map #(build-iproute-script %) fact-configs))
     "; echo -n ''")
    :transform-fn parse-iproute-script-responses))
+
+(s/defn install
+  []
+  (actions/package "iproute2"))
