@@ -20,7 +20,6 @@
                                     "test/resources"]
                    :dependencies
                    [[dda/pallet "0.9.0" :classifier "tests"]
-                    [org.clojure/tools.cli "0.3.7"]
                     [ch.qos.logback/logback-classic "1.3.0-alpha4"]
                     [org.slf4j/jcl-over-slf4j "1.8.0-beta2"]]
                    :plugins [[lein-sub "0.3.0"]
@@ -37,10 +36,10 @@
                        :aot :all
                        :main dda.pallet.dda-serverspec-crate.main
                        :uberjar-name "dda-serverspec-standalone.jar"
-                       :dependencies [[org.clojure/tools.cli "0.3.7"
-                                                    [ch.qos.logback/logback-classic "1.3.0-alpha4"
-                                                     :exclusions [com.sun.mail/javax.mail]]
-                                                    [org.slf4j/jcl-over-slf4j "1.8.0-beta2"]]]}}
+                       :dependencies [[org.clojure/tools.cli "0.3.7"]
+                                      [ch.qos.logback/logback-classic "1.3.0-alpha4"
+                                       :exclusions [com.sun.mail/javax.mail]]
+                                      [org.slf4j/jcl-over-slf4j "1.8.0-beta2"]]}}
   :release-tasks [["vcs" "assert-committed"]
                   ["change" "version" "leiningen.release/bump-version" "release"]
                   ["vcs" "commit"]
