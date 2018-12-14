@@ -69,10 +69,12 @@
       (let [result-map (zipmap [:path :fact-size-in-bytes :fact-user :fact-group :fact-mod
                                 :fact-type :fact-link-to :fact-created :fact-modified :fact-accessed]
                                split-string)
-            cleaned-path (fact/clean-up-sudo-string (:path result-map))]
-        (merge
-         (assoc result-map :path cleaned-path)
-         {:fact-exist? true})))))
+            cleaned-path (fact/clean-up-sudo-string (:path result-map))
+            cleaned-fact-size-in-bytes (fact/clean-up-fact-size-in-bytes (:fact-size-in-bytes result-map))]
+        (assoc result-map
+               :path cleaned-path
+               :fact-size-in-bytes cleaned-fact-size-in-bytes
+               :fact-exist? true)))))
 
 (s/defn create-line-parse-result [script-result-line]
   (let [file-fact-result (parse-find-line script-result-line)

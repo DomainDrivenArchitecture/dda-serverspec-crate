@@ -76,6 +76,8 @@ find: '/root/.npm': No such file or directory
     (is (:fact-exist? (sut/parse-find-line one-file)))
     (is (= "f"
            (:fact-type (sut/parse-find-line one-file))))
+    (is (= 17418
+           (:fact-size-in-bytes (sut/parse-find-line one-file))))
     (is (= "/link/target"
            (:fact-link-to (sut/parse-find-line one-linked-dir))))
     (is (= "mje"

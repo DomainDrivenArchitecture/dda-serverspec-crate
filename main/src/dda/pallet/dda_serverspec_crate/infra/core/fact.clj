@@ -27,6 +27,11 @@
   (let [split-string (clojure.string/split sudo-string  #" ")]
     (if (>= (count split-string) 4) (nth split-string 4) sudo-string)))
 
+(s/defn clean-up-fact-size-in-bytes :- s/Num ; maybe generic name?
+  "Parses int size"
+  [size-string :- s/Str]
+  (Integer. (re-find #"\d+" size-string)))
+
 (def collect-fact (partial fact/collect-fact fact-facility))
 
 (def collect-exit-code-fact (partial fact/collect-exit-code-fact fact-facility))
