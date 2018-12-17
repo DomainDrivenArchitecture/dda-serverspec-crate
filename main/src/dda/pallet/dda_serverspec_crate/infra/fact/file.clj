@@ -25,8 +25,10 @@
 
 (def FileFactConfig {s/Keyword {:path s/Str}})
 
-(def FileFactResult {:path s/Str
-                     :fact-exist? s/Bool
+(def FileFactFailResult {:path s/Str :fact-exist? (s/enum false)})
+
+(def FileFactOkResult {:path s/Str
+                     :fact-exist? (s/enum true)
                      :fact-size-in-bytes s/Num
                      :fact-user s/Str
                      :fact-group s/Str
@@ -43,6 +45,10 @@
                      :fact-created s/Str
                      :fact-modified s/Str
                      :fact-accessed s/Str})
+
+(def FileFactResult
+  (s/either FileFactOkResult
+            FileFactFailResult))
 
 (def FileFactResults {s/Keyword FileFactResult})
 
