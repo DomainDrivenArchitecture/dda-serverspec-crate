@@ -28,23 +28,23 @@
 (def FileFactFailResult {:path s/Str :fact-exist? (s/enum false)})
 
 (def FileFactOkResult {:path s/Str
-                     :fact-exist? (s/enum true)
-                     :fact-size-in-bytes s/Num
-                     :fact-user s/Str
-                     :fact-group s/Str
-                     :fact-mod s/Str
-                     :fact-type s/Str         ; b    block (buffered) special
-                                              ; c    character (unbuffered) special
-                                              ; d    directory
-                                              ; p    named pipe (FIFO)
-                                              ; f     regular file
-                                              ; l     symbolic link
-                                              ; s    socket
-                                              ; D   door (Solaris)
-                     :fact-link-to s/Str
-                     :fact-created s/Str
-                     :fact-modified s/Str
-                     :fact-accessed s/Str})
+                       :fact-exist? (s/enum true)
+                       :fact-size-in-bytes s/Num
+                       :fact-user s/Str
+                       :fact-group s/Str
+                       :fact-mod s/Str
+                       :fact-type s/Str         ; b    block (buffered) special
+                                                ; c    character (unbuffered) special
+                                                ; d    directory
+                                                ; p    named pipe (FIFO)
+                                                ; f     regular file
+                                                ; l     symbolic link
+                                                ; s    socket
+                                                ; D   door (Solaris)
+                       :fact-link-to s/Str
+                       :fact-created s/Str
+                       :fact-modified s/Str
+                       :fact-accessed s/Str})
 
 (def FileFactResult
   (s/either FileFactOkResult
