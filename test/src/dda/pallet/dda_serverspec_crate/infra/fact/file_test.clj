@@ -21,7 +21,7 @@
     [pallet.actions :as actions]
     [dda.pallet.dda-serverspec-crate.infra.fact.file :as sut]))
 
-(s/set-fn-validation! true)
+;(s/set-fn-validation! true)
 
 (def one-file
   "/file'17418'mje'mje'600'f''Sun Mar 12 13:16:42.0709127452 2017'Sun Mar 12 13:16:42.0709127452 2017'Sun Mar 12 13:16:51.0409287069 2017'")
