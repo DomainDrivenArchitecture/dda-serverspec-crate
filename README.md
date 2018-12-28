@@ -99,7 +99,9 @@ Example content of the file, `example-serverspec.edn`:
  :package [{:name "test" :installed? false}
            {:name "nano"}]
  :http [{:url "https://domaindrivenarchitecture.org"
-         :expiration-days 15}]}
+         :expiration-days 15}]
+ :iproute [{:ip "1.1.1.1" :via "172.17.0.1"}
+           {:hostname "stackoverflow.com" :via "172.17.0.1"}]}
 ```
 
 ### Watch log for debug reasons
