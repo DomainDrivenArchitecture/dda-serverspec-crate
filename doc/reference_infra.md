@@ -21,6 +21,12 @@ The schema is:
 
 (def CertificateFileTestConfig {s/Keyword {:expiration-days s/Num}})
 
+(def IprouteTestConfig {s/Keyword {(s/optional-key :via) (s/pred ip?)
+                                   (s/optional-key :src) (s/pred ip?)
+                                   (s/optional-key :dev) s/Str
+                                   :version s/Int
+                                   :source s/Str}})
+
 (def CommandTestConfig {s/Keyword {:exit-code s/Num
                                    (s/optional-key :stdout) s/Str}})
 
@@ -58,6 +64,7 @@ The schema is:
    (s/optional-key :netcat-test) netcat-test/NetcatTestConfig
    (s/optional-key :certificate-file-test) certificate-file-test/CertificateFileTestConfig
    (s/optional-key :http-test) http-test/HttpTestConfig
+   (s/optional-key :iproute-test) iproute-test/IprouteTestConfig
    (s/optional-key :command-test) command-test/CommandTestConfig      ; the expected exit code or output for specified command
    })
 ```
