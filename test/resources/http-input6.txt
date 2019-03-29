@@ -1,0 +1,191 @@
+https___gitlab.breuni.de
+== Info: Rebuilt URL to: https://gitlab.breuni.de/
+== Info: Trying 172.24.96.85...
+== Info: TCP_NODELAY set
+== Info: Connected to gitlab.breuni.de (172.24.96.85) port 443 (#0)
+== Info: ALPN, offering h2
+== Info: ALPN, offering http/1.1
+== Info: successfully set certificate verify locations:
+== Info: CAfile: /etc/ssl/certs/ca-certificates.crt
+CApath: /etc/ssl/certs
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (OUT), TLS handshake, Client hello (1):
+=> Send SSL data, 214 bytes (0xd6)
+0000: ........"&c4....._...=.....q..S..%`.?...8.,.0.........+./...$.(.
+0040: k.#.'.g.....9.....3.....=.<.5./.....q.........gitlab.breuni.de..
+0080: ....................3t.........h2.http/1.1........... ..........
+00c0: ......................
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....b
+== Info: TLSv1.2 (IN), TLS handshake, Server hello (2):
+<= Recv SSL data, 98 bytes (0x62)
+0000: ...^....Kxp.l...Z.NV.\i..........]N+.. .d.....#N...4..}.2.*.M...
+0040: .~...w..0.......................h2
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (IN), TLS handshake, Certificate (11):
+<= Recv SSL data, 2797 bytes (0xaed)
+0000: .........+0..'0..............[A..&.P..;`.0...*.H........0^1.0...
+0040: U....US1.0...U....DigiCert Inc1.0...U....www.digicert.com1.0...U
+0080: ....RapidSSL RSA CA 20180...180206000000Z..200206120000Z0.1.0...
+00c0: U....gitlab.breuni.de0.."0...*.H.............0.........\A.M~....
+0100: .K]......{v1...F..C.i!..Z.....'.....l..... ..........V=..i..cn..
+0140: ....\..z!..ON..e........!.-:YX...1..9)f...>...._x...:.7.......3%
+0180: /...8.M..5.%4\..(.J..D...R....zh.....O#8........T.I....Q..m*.5
+01c0: .u...A......>...)I.Kh;......m.>.m..l.....T. ......x.........."0
+0200: ...0...U.#..0...S..Y.k..!/.......V.u0...U........P..(#.!EvvT...{
+0240: .! 0...U....0...gitlab.breuni.de0...U...........0...U.%..0...+..
+0280: .......+.......0>..U...70503.1./.-http://cdp.rapidssl.com/RapidS
+02c0: SLRSACA2018.crl0L..U. .E0C07..`.H...l..0*0(..+.........https://w
+0300: ww.digicert.com/CPS0...g.....0u..........i0g0&.......0...http:
+0340: //status.rapidssl.com0=..+.....0..1http://cacerts.rapidssl.com/R
+0380: apidSSLRSACA2018.crt0...U....0.0..~..+.....y......n...j.h.v.....
+03c0: ..X......gp.<5.......w.........ak:N......G0E. \a]....#.*........
+0400: Q..............!...wI......+............6..r....@.v..u..Y|..C._.
+0440: .n.V.GV6.J.`....^......ak:O;.....G0E.!..).....ff.....<6...@..E
+0480: ....O... L...Z.....Z.tUC..
+
+{....7..N.}
+..,`.v.......q...#...{G8W..
+04c0: .R....d6.......ak:OU.....G0E. ,....0.M....uOI....j.....z..<....!
+0500: ..$......v....q!?.I.K6Z...j$..X.
+
+{0...*.H...............H...X.M.. 0540: /...+...W..*i.N......Q..l}
+.&~...5R.C...i.l....ydKWwN..B98.:>..Z.
+0580: .........N6l.<X...t..L...zc...q2...*..$.... ^R.......{.?Jb~hg...
+05c0: .y.......K|...... .%.a.]`.....VL...V.={....IOj........1.0|......
+0600: ......v2)R.8.....u.U.d....>c..^.U7Ee....... .A.z......0...0...
+0640: ..........F.K\.......SI0...*.H........0a1.0...U....US1.0...U....
+0680: DigiCert Inc1.0...U....www.digicert.com1 0...U....DigiCert Globa
+06c0: l Root CA0...171106122333Z..271106122333Z0^1.0...U....US1.0...U.
+0700: ...DigiCert Inc1.0...U....www.digicert.com1.0...U....RapidSSL RS
+0740: A CA 20180.."0...*.H.............0.........-...(.y.{:3.;q.e.,)e.
+0780: .-.F..Ng.........V...wW.=| ....|.Z...ySE.!........Q..<..9..NX.L.
+07c0: 6m..n.T.[.e%.k.._'..B.qQ4(.~p..i......0\.'.D....[..A.1K...,p..
+0800: fB.{...TU..f..I...`.OrI"e..v...g.7..
+
+{.xk..........m0ck$.O...k.V 0840: ........(.9...B.;.u.z.p...!...L......p.y$u........f0..b0...U.... 0880: ..S..Y.k..!/.......V.u0...U.#..0.....P5V.L.f........=.U0...U.... 08c0: .......0...U.%..0...+.........+.......0...U.......0.......04..+. 0900: .......(0&0$..+.....0...http://ocsp.digicert.com0B..U...;0907.5. 0940: 3.1http://crl3.digicert.com/DigiCertGlobalRootCA.crl0c..U. .\0Z0 0980: 7..`.H...l..0*0(..+.........https://www.digicert.com/CPS0...`.H. 09c0: ..l..0...g.....0...g.....0...*.H.............~#...5nY.Q\ak<.6..| 0a00: .).B...a.....++%Zn...R.....l'.......^cKY..u...Hd..G?$N(p....L.]d 0a40: E....'.TqzH..'.....:I.....e\.(..'R(............)0.....R.....X.N. 0a80: }
+..%..J....9##..T.GW..A...#_"..)'...eC.C.....:...BAb.....r.H...
+0ac0: .}...k....l...pXz7.l.ZQ./.S..wBj..>.^...M\..j
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....M
+== Info: TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+<= Recv SSL data, 333 bytes (0x14d)
+0000: ...I...A.Kg.2x./...otm......'2...WN.^.8.3
+
+{.....b...'pZ.Z........ 0040: .]...vr.......o.L.Tj.7i.'!......21.....\.........C+.......}
+.%.b
+0080: .R...m.d....LOE-.G..<jR.*|...Z7.3y......4.(N.0..-..B.3...,.{...\
+00c0: w4;.p....8.x+1.........{..W.eT..N&......... ...!.B..!.{H..z.....
+0100: .)....4..&bi1'.x...X!...@|?..e..q.l...:..TW*....5C..3a8.$......x
+0140: .s.P...q:....
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (IN), TLS handshake, Server finished (14):
+<= Recv SSL data, 4 bytes (0x4)
+0000: ....
+=> Send SSL data, 5 bytes (0x5)
+0000: ....F
+== Info: TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+=> Send SSL data, 70 bytes (0x46)
+0000: ...BA.5>'...Z.p+.......j....!..S....P.:'.B...u....q...Z....N..d*
+0040: ....S.
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (OUT), TLS change cipher, Client hello (1):
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send SSL data, 5 bytes (0x5)
+0000: ....(
+== Info: TLSv1.2 (OUT), TLS handshake, Finished (20):
+=> Send SSL data, 16 bytes (0x10)
+0000: ....T\...-*.@...
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....(
+== Info: TLSv1.2 (IN), TLS handshake, Finished (20):
+<= Recv SSL data, 16 bytes (0x10)
+0000: .....~...E..y..C
+== Info: SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+== Info: ALPN, server accepted to use h2
+== Info: Server certificate:
+== Info: subject: CN=gitlab.breuni.de
+== Info: start date: Feb 6 00:00:00 2018 GMT
+== Info: expire date: Feb 6 12:00:00 2020 GMT
+== Info: issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=RapidSSL RSA CA 2018
+== Info: SSL certificate verify ok.
+== Info: Using HTTP2, server supports multi-use
+== Info: Connection state changed (HTTP/2 confirmed)
+== Info: Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+=> Send SSL data, 5 bytes (0x5)
+0000: ....0
+=> Send SSL data, 5 bytes (0x5)
+0000: ....3
+=> Send SSL data, 5 bytes (0x5)
+0000: ....%
+== Info: Using Stream ID: 1 (easy handle 0x556aba74a900)
+=> Send SSL data, 5 bytes (0x5)
+0000: ....F
+=> Send header, 79 bytes (0x4f)
+0000: HEAD / HTTP/2
+000f: Host: gitlab.breuni.de
+0027: User-Agent: curl/7.58.0
+0040: Accept: /
+004d: 
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....@
+== Info: Connection state changed (MAX_CONCURRENT_STREAMS updated)!
+=> Send SSL data, 5 bytes (0x5)
+0000: ....!
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....!
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv header, 13 bytes (0xd)
+0000: HTTP/2 302 
+HTTP/2 302 
+<= Recv header, 15 bytes (0xf)
+0000: server: nginx
+server: nginx
+<= Recv header, 37 bytes (0x25)
+0000: date: Mon, 11 Mar 2019 13:15:50 GMT
+date: Mon, 11 Mar 2019 13:15:50 GMT
+<= Recv header, 40 bytes (0x28)
+0000: content-type: text/html; charset=utf-8
+content-type: text/html; charset=utf-8
+<= Recv header, 50 bytes (0x32)
+0000: location: https://gitlab.breuni.de/users/sign_in
+location: https://gitlab.breuni.de/users/sign_in
+<= Recv header, 25 bytes (0x19)
+0000: cache-control: no-cache
+cache-control: no-cache
+<= Recv header, 33 bytes (0x21)
+0000: x-content-type-options: nosniff
+x-content-type-options: nosniff
+<= Recv header, 23 bytes (0x17)
+0000: x-frame-options: DENY
+x-frame-options: DENY
+<= Recv header, 27 bytes (0x1b)
+0000: x-request-id: 57ELZhXhzb7
+x-request-id: 57ELZhXhzb7
+<= Recv header, 21 bytes (0x15)
+0000: x-runtime: 0.007905
+x-runtime: 0.007905
+<= Recv header, 26 bytes (0x1a)
+0000: x-ua-compatible: IE=edge
+x-ua-compatible: IE=edge
+<= Recv header, 33 bytes (0x21)
+0000: x-xss-protection: 1; mode=block
+x-xss-protection: 1; mode=block
+<= Recv header, 45 bytes (0x2d)
+0000: strict-transport-security: max-age=31536000
+strict-transport-security: max-age=31536000
+<= Recv header, 13 bytes (0xd)
+0000: e-env: prod
+e-env: prod
+
+<= Recv header, 2 bytes (0x2)
+0000: 
+== Info: Connection #0 to host gitlab.breuni.de left intact

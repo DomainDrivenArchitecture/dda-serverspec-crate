@@ -207,6 +207,9 @@ Access-Control-Allow-Origin: *.meissa-gmbh.de
   {:input (slurp (clojure.java.io/resource "http-input5.txt"))
    :output {:https___domaindrivenarchitecture.org {:expiration-days (- 194 date-offset)}}})
 
+(def test6
+  {:input (slurp (clojure.java.io/resource "http-input6.txt"))
+   :output {:https___gitlab.breuni.de {:expiration-days (- date-offset 98)}}})
 
 ; ------------------------  tests  ------------------------------
 (deftest test-parse-date
@@ -229,4 +232,6 @@ Access-Control-Allow-Origin: *.meissa-gmbh.de
     (is (= fact4
            (sut/parse-http-script-responses script-output4)))
     (is (= (:output test5)
-           (sut/parse-http-script-responses (:input test5))))))
+           (sut/parse-http-script-responses (:input test5))))
+    (is (= (:output test6)
+           (sut/parse-http-script-responses (:input test6))))))
