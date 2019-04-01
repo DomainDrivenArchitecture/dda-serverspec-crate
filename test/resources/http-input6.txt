@@ -1,8 +1,8 @@
-https___gitlab.breuni.de
-== Info: Rebuilt URL to: https://gitlab.breuni.de/
+https___gitlab.organzation.de
+== Info: Rebuilt URL to: https://gitlab.organzation.de/
 == Info: Trying 172.24.96.85...
 == Info: TCP_NODELAY set
-== Info: Connected to gitlab.breuni.de (172.24.96.85) port 443 (#0)
+== Info: Connected to gitlab.organzation.de (172.24.96.85) port 443 (#0)
 == Info: ALPN, offering h2
 == Info: ALPN, offering http/1.1
 == Info: successfully set certificate verify locations:
@@ -13,7 +13,7 @@ CApath: /etc/ssl/certs
 == Info: TLSv1.2 (OUT), TLS handshake, Client hello (1):
 => Send SSL data, 214 bytes (0xd6)
 0000: ........"&c4....._...=.....q..S..%`.?...8.,.0.........+./...$.(.
-0040: k.#.'.g.....9.....3.....=.<.5./.....q.........gitlab.breuni.de..
+0040: k.#.'.g.....9.....3.....=.<.5./.....q.........gitlab.organzation.de..
 0080: ....................3t.........h2.http/1.1........... ..........
 00c0: ......................
 <= Recv SSL data, 5 bytes (0x5)
@@ -29,13 +29,13 @@ CApath: /etc/ssl/certs
 0000: .........+0..'0..............[A..&.P..;`.0...*.H........0^1.0...
 0040: U....US1.0...U....DigiCert Inc1.0...U....www.digicert.com1.0...U
 0080: ....RapidSSL RSA CA 20180...180206000000Z..200206120000Z0.1.0...
-00c0: U....gitlab.breuni.de0.."0...*.H.............0.........\A.M~....
+00c0: U....gitlab.organzation.de0.."0...*.H.............0.........\A.M~....
 0100: .K]......{v1...F..C.i!..Z.....'.....l..... ..........V=..i..cn..
 0140: ....\..z!..ON..e........!.-:YX...1..9)f...>...._x...:.7.......3%
 0180: /...8.M..5.%4\..(.J..D...R....zh.....O#8........T.I....Q..m*.5
 01c0: .u...A......>...)I.Kh;......m.>.m..l.....T. ......x.........."0
 0200: ...0...U.#..0...S..Y.k..!/.......V.u0...U........P..(#.!EvvT...{
-0240: .! 0...U....0...gitlab.breuni.de0...U...........0...U.%..0...+..
+0240: .! 0...U....0...gitlab.organzation.de0...U...........0...U.%..0...+..
 0280: .......+.......0>..U...70503.1./.-http://cdp.rapidssl.com/RapidS
 02c0: SLRSACA2018.crl0L..U. .E0C07..`.H...l..0*0(..+.........https://w
 0300: ww.digicert.com/CPS0...g.....0u..........i0g0&.......0...http:
@@ -111,7 +111,7 @@ CApath: /etc/ssl/certs
 == Info: SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
 == Info: ALPN, server accepted to use h2
 == Info: Server certificate:
-== Info: subject: CN=gitlab.breuni.de
+== Info: subject: CN=gitlab.organzation.de
 == Info: start date: Feb 6 00:00:00 2018 GMT
 == Info: expire date: Feb 6 12:00:00 2020 GMT
 == Info: issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=RapidSSL RSA CA 2018
@@ -130,10 +130,10 @@ CApath: /etc/ssl/certs
 0000: ....F
 => Send header, 79 bytes (0x4f)
 0000: HEAD / HTTP/2
-000f: Host: gitlab.breuni.de
+000f: Host: gitlab.organzation.de
 0027: User-Agent: curl/7.58.0
 0040: Accept: /
-004d: 
+004d:
 <= Recv SSL data, 5 bytes (0x5)
 0000: ....@
 == Info: Connection state changed (MAX_CONCURRENT_STREAMS updated)!
@@ -144,8 +144,8 @@ CApath: /etc/ssl/certs
 <= Recv SSL data, 5 bytes (0x5)
 0000: .....
 <= Recv header, 13 bytes (0xd)
-0000: HTTP/2 302 
-HTTP/2 302 
+0000: HTTP/2 302
+HTTP/2 302
 <= Recv header, 15 bytes (0xf)
 0000: server: nginx
 server: nginx
@@ -156,8 +156,8 @@ date: Mon, 11 Mar 2019 13:15:50 GMT
 0000: content-type: text/html; charset=utf-8
 content-type: text/html; charset=utf-8
 <= Recv header, 50 bytes (0x32)
-0000: location: https://gitlab.breuni.de/users/sign_in
-location: https://gitlab.breuni.de/users/sign_in
+0000: location: https://gitlab.organzation.de/users/sign_in
+location: https://gitlab.organzation.de/users/sign_in
 <= Recv header, 25 bytes (0x19)
 0000: cache-control: no-cache
 cache-control: no-cache
@@ -187,5 +187,5 @@ strict-transport-security: max-age=31536000
 e-env: prod
 
 <= Recv header, 2 bytes (0x2)
-0000: 
-== Info: Connection #0 to host gitlab.breuni.de left intact
+0000:
+== Info: Connection #0 to host gitlab.organzation.de left intact

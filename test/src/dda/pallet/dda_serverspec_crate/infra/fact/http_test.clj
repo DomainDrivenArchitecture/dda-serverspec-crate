@@ -209,7 +209,7 @@ Access-Control-Allow-Origin: *.meissa-gmbh.de
 
 (def test6
   {:input (slurp (clojure.java.io/resource "http-input6.txt"))
-   :output {:https___gitlab.breuni.de {:expiration-days (- date-offset 98)}}})
+   :output {:https___gitlab.organzation.de {:expiration-days (- date-offset 98)}}})
 
 ; ------------------------  tests  ------------------------------
 (deftest test-parse-date
