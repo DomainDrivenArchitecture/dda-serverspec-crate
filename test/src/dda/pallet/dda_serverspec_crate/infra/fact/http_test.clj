@@ -29,6 +29,10 @@
   (java.time.LocalDate/parse "15.04.2018"
     (java.time.format.DateTimeFormatter/ofPattern "dd.MM.yyyy")))
 
+(def date-2020-02-06-12-00
+  (java.time.LocalDate/parse "06.02.2020 12:00:00"
+    (java.time.format.DateTimeFormatter/ofPattern "dd.MM.yyyy hh:mm:ss")))
+
 (def date-offset
   (try
     (.between (java.time.temporal.ChronoUnit/DAYS)
@@ -215,7 +219,9 @@ Access-Control-Allow-Origin: *.meissa-gmbh.de
     (is (= date-2018-04-15
            (sut/parse-date-16-04 "Sun, 15 Apr 2018 12:01:04 GMT")))
     (is (= date-2018-04-15
-           (sut/parse-date-18-04 "Apr 15 12:01:04 2018 GMT")))))
+           (sut/parse-date-18-04 "Apr 15 12:01:04 2018 GMT")))
+    (is (= date-2020-02-06-12-00
+           (sut/parse-date-18-04 "Feb  6 12:00:00 2020 GMT")))))
 
 (deftest test-parse
   (testing

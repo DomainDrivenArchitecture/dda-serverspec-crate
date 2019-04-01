@@ -49,20 +49,24 @@
       "LC_ALL=C curl --head --insecure --trace-ascii - " url ";"
       "echo -n '" output-separator "'")))
 
+(s/defn preprocess-date-string :- s/Str
+  "`date` can emit an extra space before date instead of zero or nothing: 'Feb  1'"
+  [date-string :- s/Str]
+  (string/replace date-string #" +" " "))
+
 (s/defn parse-date-16-04 :- java.time.LocalDate
   [date-string :- s/Str]
   (let [date-format "EEE, d MMM yyyy HH:mm:ss z"
         locale (java.util.Locale. "en" "US")];
-    (java.time.LocalDate/parse date-string
+    (java.time.LocalDate/parse (preprocess-date-string date-string)
       (java.time.format.DateTimeFormatter/ofPattern date-format locale))))
 
 (s/defn parse-date-18-04 :- java.time.LocalDate
   [date-string :- s/Str]
   (let [date-format "MMM d HH:mm:ss yyyy z"
         locale (java.util.Locale. "en" "US")];
-    (java.time.LocalDate/parse date-string
+    (java.time.LocalDate/parse (preprocess-date-string date-string)
       (java.time.format.DateTimeFormatter/ofPattern date-format locale))))
-
 
 (s/defn parse-http-response :- HttpFactResult
   "returns a HttpFactResult from the result text of one http check"
