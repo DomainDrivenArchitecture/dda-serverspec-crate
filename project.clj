@@ -3,7 +3,7 @@
   :url "https://domaindrivenarchitecture.org"
   :license {:name "Apache License, Version 2.0"
             :url "https://www.apache.org/licenses/LICENSE-2.0.html"}
-  :dependencies [[dda/pallet "0.9.1-SNAPSHOT"]
+  :dependencies [[dda/pallet "0.9.1"]
                  [dda/dda-pallet-commons "1.4.1"]
                  [dda/dda-config-commons "1.4.2"]
                  [dda/dda-pallet "2.2.2"]
@@ -20,7 +20,7 @@
                    :resource-paths ["integration/resources"
                                     "test/resources"]
                    :dependencies
-                   [[dda/pallet "0.9.1-SNAPSHOT" :classifier "tests"]
+                   [[dda/pallet "0.9.1" :classifier "tests"]
                     [ch.qos.logback/logback-classic "1.3.0-alpha4"]
                     [org.slf4j/jcl-over-slf4j "1.8.0-beta4"]]
                    :plugins [[lein-sub "0.3.0"]
@@ -30,14 +30,14 @@
                                                       :exclusions [commons-logging]]]}}
              :test {:test-paths ["test/src"]
                     :resource-paths ["test/resources"]
-                    :dependencies [[dda/pallet "0.9.1-SNAPSHOT" :classifier "tests"]
+                    :dependencies [[dda/pallet "0.9.1" :classifier "tests"]
                                    [org.clojure/test.check "0.10.0-alpha4"]]}
              :uberjar {:source-paths ["uberjar/src"]
                        :resource-paths ["uberjar/resources"]
                        :aot :all
                        :main dda.pallet.dda-serverspec-crate.main
                        :uberjar-name "dda-serverspec-standalone.jar"
-                       :dependencies [[org.clojure/tools.cli "0.4.1"]
+                       :dependencies [[org.clojure/tools.cli "0.4.2"]
                                       [ch.qos.logback/logback-classic "1.3.0-alpha4"
                                        :exclusions [com.sun.mail/javax.mail]]
                                       [org.slf4j/jcl-over-slf4j "1.8.0-beta4"]]}}
