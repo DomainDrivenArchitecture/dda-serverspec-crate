@@ -21,12 +21,23 @@ jobs:
         - # create docker image
         - docker build -t dda-serverspec-crate --file integration/docker/image/Dockerfile .
       deploy:
-        skip_cleanup: true
-        provider: releases
-        overwrite: true
-        draft: true
-        api_key:
-          secure: "I5pLTX6r21Tv80suzjzK0E4+5FVHQ9da2MpH/NN+vpUTb1OXSlOhxMnkgaANPbKOAitVKBOt5+nsy/y29ac0YOmEMnLpdTOsra/azPyO4yVMdW3fkeCbgxkMpgRS/NOrALDs84x45zZ1uYBPZ5gez/OQoM1YIXBz2rRY/c5hrMS0AIlILmDdceFcFakHf/BveLg1ue404MQy6mpHpcnNOPB9orVTMb31qTwlF02427YIDEIN04uVHL9KzOSNUsAcEn3z/iebcUnFrr2KT3BbPe+jGHnnK5wc7/p74mxm2q1dzuuDPsr+Oe7MH8/tQm4l3J758zMAn/uMZOuqIS/DVlCkHA+Qk0ktjn5JYkhlhYPq1rlgl2mF/91+enJGq/Z1d5pFmloTG5mKL499u4/Eyd+yp/PetRczT0O6V/AKPuVaplmY2CdZKtjVgJ5D5MIUrf63ACtWAFGei9q4rIhKRMqDloPbgY+Q3DISMCoYO9K80tUjoTgBCyMaWjLlIwQDAPsA5i3s6D3f61tFvLRbb+fCi12f8W6+lXbd2+je1MkaQbNgK6EuDkIi+jky6/S43DBTJkAIbF2EpaG4tXVDmxO79z1U5xDBW1nGRDzq4J1yUq5G28JEzh6OHPA7LDKIc6WjMEqK5ZEO/qLOlpf8mpAJe/h8sWw5K4NGHLhtrDs="
-        file:
-          - target/dda-serverspec-standalone.jar
-          - target/dda-serverspec-standalone.jar.md5
+        - provider: releases
+          skip_cleanup: true
+          on:
+            tags: true
+          overwrite: true
+          api_key:
+            secure: "I5pLTX6r21Tv80suzjzK0E4+5FVHQ9da2MpH/NN+vpUTb1OXSlOhxMnkgaANPbKOAitVKBOt5+nsy/y29ac0YOmEMnLpdTOsra/azPyO4yVMdW3fkeCbgxkMpgRS/NOrALDs84x45zZ1uYBPZ5gez/OQoM1YIXBz2rRY/c5hrMS0AIlILmDdceFcFakHf/BveLg1ue404MQy6mpHpcnNOPB9orVTMb31qTwlF02427YIDEIN04uVHL9KzOSNUsAcEn3z/iebcUnFrr2KT3BbPe+jGHnnK5wc7/p74mxm2q1dzuuDPsr+Oe7MH8/tQm4l3J758zMAn/uMZOuqIS/DVlCkHA+Qk0ktjn5JYkhlhYPq1rlgl2mF/91+enJGq/Z1d5pFmloTG5mKL499u4/Eyd+yp/PetRczT0O6V/AKPuVaplmY2CdZKtjVgJ5D5MIUrf63ACtWAFGei9q4rIhKRMqDloPbgY+Q3DISMCoYO9K80tUjoTgBCyMaWjLlIwQDAPsA5i3s6D3f61tFvLRbb+fCi12f8W6+lXbd2+je1MkaQbNgK6EuDkIi+jky6/S43DBTJkAIbF2EpaG4tXVDmxO79z1U5xDBW1nGRDzq4J1yUq5G28JEzh6OHPA7LDKIc6WjMEqK5ZEO/qLOlpf8mpAJe/h8sWw5K4NGHLhtrDs="
+          file:
+            - target/dda-serverspec-standalone.jar
+            - target/dda-serverspec-standalone.jar.md5
+        - provider: releases
+          skip_cleanup: true
+          on:
+            branch: release_1.3.x
+          overwrite: true
+          api_key:
+            secure: "I5pLTX6r21Tv80suzjzK0E4+5FVHQ9da2MpH/NN+vpUTb1OXSlOhxMnkgaANPbKOAitVKBOt5+nsy/y29ac0YOmEMnLpdTOsra/azPyO4yVMdW3fkeCbgxkMpgRS/NOrALDs84x45zZ1uYBPZ5gez/OQoM1YIXBz2rRY/c5hrMS0AIlILmDdceFcFakHf/BveLg1ue404MQy6mpHpcnNOPB9orVTMb31qTwlF02427YIDEIN04uVHL9KzOSNUsAcEn3z/iebcUnFrr2KT3BbPe+jGHnnK5wc7/p74mxm2q1dzuuDPsr+Oe7MH8/tQm4l3J758zMAn/uMZOuqIS/DVlCkHA+Qk0ktjn5JYkhlhYPq1rlgl2mF/91+enJGq/Z1d5pFmloTG5mKL499u4/Eyd+yp/PetRczT0O6V/AKPuVaplmY2CdZKtjVgJ5D5MIUrf63ACtWAFGei9q4rIhKRMqDloPbgY+Q3DISMCoYO9K80tUjoTgBCyMaWjLlIwQDAPsA5i3s6D3f61tFvLRbb+fCi12f8W6+lXbd2+je1MkaQbNgK6EuDkIi+jky6/S43DBTJkAIbF2EpaG4tXVDmxO79z1U5xDBW1nGRDzq4J1yUq5G28JEzh6OHPA7LDKIc6WjMEqK5ZEO/qLOlpf8mpAJe/h8sWw5K4NGHLhtrDs="
+          file:
+            - target/dda-serverspec-standalone.jar
+            - target/dda-serverspec-standalone.jar.md5
