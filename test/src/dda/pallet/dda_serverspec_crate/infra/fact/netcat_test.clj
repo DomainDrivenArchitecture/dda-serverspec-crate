@@ -42,6 +42,38 @@ nc: getaddrinfo: Name or service not known
     netcat-yahoo
     sut/output-separator))
 
+(def real-script-example
+  {:in
+   "tools-watchdog-0.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+tools-watchdog-1.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-0.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-1.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-2.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-0.dep.prod.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-1.dep.prod.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----"
+   :out
+   {:tools-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true},
+    :tools-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true},
+    :app-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true},
+    :app-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true},
+    :app-watchdog-2.dep.dev.organization.de_22_8 {:reachable? true},
+    :app-watchdog-0.dep.prod.organization.de_22_8 {:reachable? true},
+    :app-watchdog-1.dep.prod.organization.de_22_8 {:reachable? true}}})
+
 ; ------------------------  tests  ------------------------------
 (deftest test-parse-single-results
   (testing
@@ -53,4 +85,6 @@ nc: getaddrinfo: Name or service not known
   (testing
    "test parsing netcat output"
     (is (= 4
-           (count (keys (sut/parse-netcat script-results)))))))
+           (count (keys (sut/parse-netcat script-results)))))
+    (is (= (:out real-script-example)
+           (sut/parse-netcat (:in real-script-example))))))
