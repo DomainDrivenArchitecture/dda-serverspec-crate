@@ -3,10 +3,9 @@
   :url "https://domaindrivenarchitecture.org"
   :license {:name "Apache License, Version 2.0"
             :url "https://www.apache.org/licenses/LICENSE-2.0.html"}
-  :dependencies [[dda/pallet "0.9.1"]
-                 [dda/dda-pallet-commons "1.4.1"]
+  :dependencies [[dda/dda-pallet-commons "1.4.2"]
                  [dda/dda-config-commons "1.4.2"]
-                 [dda/dda-pallet "2.2.2"]
+                 [dda/dda-pallet "2.2.3"]
                  [iproute "0.1.5"]]
   :source-paths ["main/src"]
   :resource-paths ["main/resources"]
