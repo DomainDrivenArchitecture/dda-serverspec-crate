@@ -9,6 +9,7 @@
                  [iproute "0.1.5"]]
   :source-paths ["main/src"]
   :resource-paths ["main/resources"]
+  :target-path "target/%s/"
   :repositories [["snapshots" :clojars]
                  ["releases" :clojars]]
   :deploy-repositories [["snapshots" :clojars]
@@ -49,4 +50,4 @@
                   ["change" "version" "leiningen.release/bump-version"]
                   ["vcs" "commit"]
                   ["vcs" "push"]]
- :local-repo-classpath true)
+  :local-repo-classpath true)
