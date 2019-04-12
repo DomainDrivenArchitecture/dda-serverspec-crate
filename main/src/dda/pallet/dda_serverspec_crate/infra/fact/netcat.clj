@@ -33,7 +33,7 @@
 
 (def NetcatFactResults {s/Keyword NetcatFactResult})
 
-(def output-separator "----- dda-pallet netcat output separator -----\n")
+(def output-separator "----- dda-pallet netcat output separator -----")
 
 ; -----------------------  functions  -------------------------------
 (s/defn replace-comma :- s/Str [input :- s/Str]
@@ -75,7 +75,7 @@
 (defn parse-netcat
   [script-result]
   (apply merge
-    (map parse-result
+    (map (comp parse-result clojure.string/trim)
       (clojure.string/split script-result (re-pattern output-separator)))))
 
 (s/defn collect-netcat-fact
