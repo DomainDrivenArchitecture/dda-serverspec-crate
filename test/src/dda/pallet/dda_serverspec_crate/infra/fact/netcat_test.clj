@@ -42,7 +42,7 @@ nc: getaddrinfo: Name or service not known
     netcat-yahoo
     sut/output-separator))
 
-(def real-script-example
+(def real-script-example1
   {:in
    "tools-watchdog-0.dep.dev.organization.de_22_8
 0
@@ -74,6 +74,33 @@ app-watchdog-1.dep.prod.organization.de_22_8
     :app-watchdog-0.dep.prod.organization.de_22_8 {:reachable? true},
     :app-watchdog-1.dep.prod.organization.de_22_8 {:reachable? true}}})
 
+(def real-script-example2
+  {:in
+   "FACT_START
+tools-watchdog-0.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----tools-watchdog-1.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----app-watchdog-0.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----app-watchdog-1.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----app-watchdog-2.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----app-watchdog-0.dep.prod.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----app-watchdog-1.dep.prod.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----FACT_END"
+   :out
+   {:tools-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true},
+    :tools-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true},
+    :app-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true},
+    :app-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true},
+    :app-watchdog-2.dep.dev.organization.de_22_8 {:reachable? true},
+    :app-watchdog-0.dep.prod.organization.de_22_8 {:reachable? true},
+    :app-watchdog-1.dep.prod.organization.de_22_8 {:reachable? true}}})
+
 ; ------------------------  tests  ------------------------------
 (deftest test-parse-single-results
   (testing
@@ -86,5 +113,5 @@ app-watchdog-1.dep.prod.organization.de_22_8
    "test parsing netcat output"
     (is (= 4
            (count (keys (sut/parse-netcat script-results)))))
-    (is (= (:out real-script-example)
-           (sut/parse-netcat (:in real-script-example))))))
+    (is (= (:out real-script-example1)
+           (sut/parse-netcat (:in real-script-example1))))))
