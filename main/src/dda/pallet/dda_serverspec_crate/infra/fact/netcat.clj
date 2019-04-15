@@ -50,7 +50,8 @@
 (s/defn build-netcat-script
   "builds the script from the given config"
   [netcat-config] ; :- MapEntry of NetcatFactConfig
-  (let [config-val (val netcat-config)]
+  (let [config-val (val netcat-config)
+        output-separator-with-newline (str output-separator "\n")]
     (str
      "echo '"
      (config-to-string
@@ -64,7 +65,7 @@
      " -z -w "
      (:timeout config-val)
      "; echo $?"
-     "; echo -n '" output-separator "'")))
+     "; echo -n '" output-separator-with-newline "'")))
 
 (s/defn parse-result [single-script-result :- s/Str]
   (let [result-lines (clojure.string/split single-script-result #"\n")
