@@ -18,6 +18,8 @@ jobs:
         - lein test
         - lein uberjar
         - md5sum target/uberjar/dda-serverspec-standalone.jar > target/uberjar/dda-serverspec-standalone.jar.md5
+        - sha256sum target/uberjar/dda-serverspec-standalone.jar > target/uberjar/dda-serverspec-standalone.jar.sha256
+        - sha512sum target/uberjar/dda-serverspec-standalone.jar > target/uberjar/dda-serverspec-standalone.jar.sha512
         - # create docker image
         - docker build -t dda-serverspec-crate --file integration/docker/image/Dockerfile .
       deploy:
@@ -31,3 +33,5 @@ jobs:
           file:
             - target/uberjar/dda-serverspec-standalone.jar
             - target/uberjar/dda-serverspec-standalone.jar.md5
+            - target/uberjar/dda-serverspec-standalone.jar.sha256
+            - target/uberjar/dda-serverspec-standalone.jar.sha512
