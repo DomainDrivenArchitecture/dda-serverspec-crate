@@ -30,4 +30,4 @@
 
 (defdatatest should-create-http-configuration [input expected]
   (is (= expected
-         (sut/infra-configuration domain-config-http-test))))
+         (sut/infra-configuration input))))
