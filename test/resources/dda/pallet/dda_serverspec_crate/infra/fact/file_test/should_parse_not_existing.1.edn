@@ -1,0 +1,2 @@
+{:input "find: `/not-existing`: No such file or directory"
+ :expected {:path "/not-existing", :fact-exist? false}}

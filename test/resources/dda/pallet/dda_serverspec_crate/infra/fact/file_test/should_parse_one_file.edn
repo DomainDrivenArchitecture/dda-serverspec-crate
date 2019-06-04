@@ -1,0 +1,12 @@
+{:input "/file'17418'mje'mje'600'f''Sun Mar 12 13:16:42.0709127452 2017'Sun Mar 12 13:16:42.0709127452 2017'Sun Mar 12 13:16:51.0409287069 2017'"
+ :expected {:path "/file"
+            :fact-created "Sun Mar 12 13:16:42.0709127452 2017"
+            :fact-type "f"
+            :fact-accessed "Sun Mar 12 13:16:51.0409287069 2017"
+            :fact-exist? true
+            :fact-mod "600"
+            :fact-group "mje"
+            :fact-modified "Sun Mar 12 13:16:42.0709127452 2017"
+            :fact-user "mje"
+            :fact-size-in-bytes 17418
+            :fact-link-to ""}}

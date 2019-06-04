@@ -1,0 +1,2 @@
+{:input "find: \"/absent\": Datei oder Verzeichnis nicht gefunden"
+ :expected {:path "/absent", :fact-exist? false}}

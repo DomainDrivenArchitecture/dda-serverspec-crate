@@ -1,0 +1,12 @@
+{:input "/linked-entry'11'mje'mje'777'l'/link/target/file'Fri May 12 10:22:20.0668140924 2017'Fri May 12 10:22:20.0668140924 2017'Fri May 12 10:22:21.0816135163 2017'"
+ :expected {:path "/linked-entry"
+            :fact-created "Fri May 12 10:22:20.0668140924 2017"
+            :fact-type "l"
+            :fact-accessed "Fri May 12 10:22:21.0816135163 2017"
+            :fact-exist? true
+            :fact-mod "777"
+            :fact-group "mje"
+            :fact-modified "Fri May 12 10:22:20.0668140924 2017"
+            :fact-user "mje"
+            :fact-size-in-bytes 11
+            :fact-link-to "/link/target/file"}}

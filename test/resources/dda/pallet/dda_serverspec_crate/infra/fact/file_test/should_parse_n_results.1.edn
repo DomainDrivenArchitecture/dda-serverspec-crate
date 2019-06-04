@@ -1,0 +1,6 @@
+{:input "/home/gec/test/t1'0'gec'gec'664'f''Fri May 12 19:06:04.0519157000 2017'Fri May 12 19:06:04.0519157000 2017'Fri May 12 19:06:04.0519157000 2017
+/home/gec/test/t2'0'gec'gec'664'f''Fri May 12 19:06:04.0519157000 2017'Fri May 12 19:06:04.0519157000 2017'Fri May 12 19:06:04.0519157000 2017
+/home/gec/test/t3'0'gec'gec'664'f''Fri May 12 19:06:04.0519157000 2017'Fri May 12 19:06:04.0519157000 2017'Fri May 12 19:06:04.0519157000 2017
+find: `/not-existing`: No such file or directory
+"
+ :expected 4}
