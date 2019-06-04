@@ -29,6 +29,7 @@
              :test {:test-paths ["test/src"]
                     :resource-paths ["test/resources"]
                     :dependencies [[dda/pallet "0.9.1" :classifier "tests"]
+                                   [dda/data-test "0.1.0"]
                                    [org.clojure/test.check "0.10.0-alpha4"]]}
              :uberjar {:source-paths ["uberjar/src"]
                        :resource-paths ["uberjar/resources"]

@@ -1,0 +1,7 @@
+{:input {:file [{:path "/etc"}
+                {:path "/nonexist/sth" :exist? false}]}
+ :expected {:dda-servertest
+            {:file-fact {:_etc {:path "/etc"}
+                         :_nonexist_sth {:path "/nonexist/sth"}}
+             :file-test {:_etc {:exist? true}
+                         :_nonexist_sth {:exist? false}}}}}
