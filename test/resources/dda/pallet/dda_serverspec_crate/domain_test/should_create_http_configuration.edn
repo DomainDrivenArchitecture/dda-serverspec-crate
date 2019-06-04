@@ -1,0 +1,11 @@
+{:input {:http [{:url "https://google.com"
+                  :expiration-days 33}
+                 {:url "http://bahn.de"
+                  :expiration-days 22}]}
+ :expected {:dda-servertest
+            {:http-fact
+             {:https___google.com {:url "https://google.com"}
+              :http___bahn.de {:url "http://bahn.de"}}
+             :http-test
+             {:https___google.com {:expiration-days 33}
+              :http___bahn.de {:expiration-days 22}}}}}

@@ -20,13 +20,6 @@
    [data-test :refer :all]
    [dda.pallet.dda-serverspec-crate.domain :as sut]))
 
-(def domain-config-http-test
-  {:http '({:url "https://google.com"
-            :expiration-days 33}
-           {:url "http://bahn.de"
-            :expiration-days 22})})
-
-; ------------------------  tests  ---------------------------
 (defdatatest should-create-infra-configuration [input expected]
     (is (= expected
            (sut/infra-configuration input))))
@@ -35,14 +28,6 @@
     (is (= expected
           (sut/infra-configuration input))))
 
-(deftest should-create-http-configuration
-  (testing
-    "test creation of http infra configuration"
-    (is (=  {:dda-servertest
-              {:http-fact
-               {:https___google.com {:url "https://google.com"},
-                :http___bahn.de {:url "http://bahn.de"}},
-               :http-test
-               {:https___google.com {:expiration-days 33},
-                :http___bahn.de {:expiration-days 22}}}}
-            (sut/infra-configuration domain-config-http-test)))))
+(defdatatest should-create-http-configuration [input expected]
+  (is (= expected
+         (sut/infra-configuration domain-config-http-test))))
