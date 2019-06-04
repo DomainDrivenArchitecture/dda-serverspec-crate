@@ -20,12 +20,6 @@
    [data-test :refer :all]
    [dda.pallet.dda-serverspec-crate.domain :as sut]))
 
-(def domain-config-certificate-file-test
-  {:certificate-file '({:file "/etc/ssl/crt/primary.crt"
-                        :expiration-days 33}
-                       {:file "/etc/ssl/crt/nonvalid.crt"
-                        :expiration-days 22})})
-
 (def domain-config-http-test
   {:http '({:url "https://google.com"
             :expiration-days 33}
@@ -34,20 +28,14 @@
 
 ; ------------------------  tests  ---------------------------
 (defdatatest should-create-infra-configuration [input expected]
-    (is (=  expected
-            (sut/infra-configuration input))))
+    (is (= expected
+           (sut/infra-configuration input))))
 
-(deftest test-certificate-file-configuration
-  (testing
-    "test creation of certificate-file infra configuration"
-    (is (=  {:dda-servertest
-              {:certificate-file-fact {:_etc_ssl_crt_primary.crt {:file "/etc/ssl/crt/primary.crt"}
-                                       :_etc_ssl_crt_nonvalid.crt {:file "/etc/ssl/crt/nonvalid.crt"}}
-               :certificate-file-test {:_etc_ssl_crt_primary.crt {:expiration-days 33},
-                                       :_etc_ssl_crt_nonvalid.crt {:expiration-days 22}}}}
-          (sut/infra-configuration domain-config-certificate-file-test)))))
+(defdatatest should-create-certificate-file-configuration [input expected]
+    (is (= expected
+          (sut/infra-configuration input))))
 
-(deftest test-http-configuration
+(deftest should-create-http-configuration
   (testing
     "test creation of http infra configuration"
     (is (=  {:dda-servertest

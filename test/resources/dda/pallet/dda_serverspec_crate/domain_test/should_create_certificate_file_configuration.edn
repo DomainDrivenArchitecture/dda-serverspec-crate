@@ -1,0 +1,9 @@
+{:input {:certificate-file [{:file "/etc/ssl/crt/primary.crt"
+                             :expiration-days 33}
+                            {:file "/etc/ssl/crt/nonvalid.crt"
+                             :expiration-days 22}]}
+ :expected {:dda-servertest
+            {:certificate-file-fact {:_etc_ssl_crt_primary.crt {:file "/etc/ssl/crt/primary.crt"}
+                                     :_etc_ssl_crt_nonvalid.crt {:file "/etc/ssl/crt/nonvalid.crt"}}
+             :certificate-file-test {:_etc_ssl_crt_primary.crt {:expiration-days 33}
+                                     :_etc_ssl_crt_nonvalid.crt {:expiration-days 22}}}}}
