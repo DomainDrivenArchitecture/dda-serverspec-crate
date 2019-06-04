@@ -16,11 +16,12 @@
 (ns dda.pallet.dda-serverspec-crate.main
   (:gen-class)
   (:require
-    [clojure.string :as str]
-    [clojure.tools.cli :as cli]
-    [dda.pallet.core.main-helper :as mh]
-    [dda.pallet.core.app :as core-app]
-    [dda.pallet.dda-serverspec-crate.app :as app]))
+   [clojure.string :as str]
+   [clojure.tools.cli :as cli]
+   [dda.pallet.core.main-helper :as mh]
+   [dda.config.commons.styled-output :as styled]
+   [dda.pallet.core.app :as core-app]
+   [dda.pallet.dda-serverspec-crate.app :as app]))
 
 (def cli-options
   [["-h" "--help"]
@@ -50,7 +51,7 @@
     (cond
       help (mh/exit 0 (usage summary))
       errors (mh/exit 1 (mh/error-msg errors))
-      (not= (count arguments) 1) (exit 1 (usage summary))
+      (not= (count arguments) 1) (mh/exit 1 (usage summary))
       (:install-dependencies options) (if (core-app/existing-install
                                            app/crate-app
                                            {:domain (first arguments)
