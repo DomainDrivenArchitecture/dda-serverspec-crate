@@ -16,43 +16,20 @@
 
 (ns dda.pallet.dda-serverspec-crate.infra.fact.certificate-file-test
   (:require
-    [clojure.test :refer :all]
-    [pallet.actions :as actions]
-    [dda.pallet.dda-serverspec-crate.infra.fact.certificate-file :as sut]))
+   [clojure.test :refer :all]
+   [data-test :refer :all]
+   [dda.pallet.dda-serverspec-crate.infra.fact.certificate-file :as sut]))
 
-; ------------------------  test data  ------------------------
-(def output1
-  "_somedir_cert.pem
-123
-")
+(deftest should-parse-oldscool
+  (is (= {:_somedir_cert.pem {:expiration-days 123}
+          :_someotherdir_cert2.pem {:expiration-days 789}}
+         (sut/parse-certificate-script-responses 
+          (str
+           "_somedir_cert.pem\n123\n"
+           sut/output-separator
+           "_someotherdir_cert2.pem\n789\n"
+           sut/output-separator)))))
 
-(def fact1 {:_somedir_cert.pem {:expiration-days 123}})
-
-(def output2
-  (str
-    "_somedir_cert.pem\n123\n"
-    sut/output-separator
-    "_someotherdir_cert2.pem\n789\n"
-    sut/output-separator))
-
-(def fact2 {:_somedir_cert.pem {:expiration-days 123}
-            :_someotherdir_cert2.pem {:expiration-days 789}})
-
-(def output3
-  "_somedir_cert3.pem\nError opening Certificate cert3.pem
-139973823276696:error:02001002:system library:fopen:No such file or directory:bss_file.c:398:fopen('ccert.pem','r')
-139973823276696:error:20074002:BIO routines:FILE_CTRL:system lib:bss_file.c:400:
-unable to load certificate")
-
-(def fact3 {:_somedir_cert3.pem {:expiration-days -1}})
-
-; ------------------------  tests  ------------------------------
-(deftest test-parse
-  (testing
-    "test parsing certificate check output"
-    (is (= fact1
-           (sut/parse-certificate-script-responses output1)))
-    (is (= fact2
-           (sut/parse-certificate-script-responses output2)))
-    (is (= fact3
-           (sut/parse-certificate-script-responses output3)))))
+(defdatatest should-parse [plain-input fact-expected]
+  (is (= fact-expected
+          (sut/parse-certificate-script-responses plain-input))))

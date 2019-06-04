@@ -1,0 +1,4 @@
+{:input "_somedir_cert.pem
+123
+"
+ :expected {:_somedir_cert.pem {:expiration-days 123}}}

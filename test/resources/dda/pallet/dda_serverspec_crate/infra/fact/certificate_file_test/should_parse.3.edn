@@ -1,0 +1,5 @@
+{:input "_somedir_cert3.pem\nError opening Certificate cert3.pem
+139973823276696:error:02001002:system library:fopen:No such file or directory:bss_file.c:398:fopen('ccert.pem','r')
+139973823276696:error:20074002:BIO routines:FILE_CTRL:system lib:bss_file.c:400:
+unable to load certificate"
+ :expected {:_somedir_cert3.pem {:expiration-days -1}}}
