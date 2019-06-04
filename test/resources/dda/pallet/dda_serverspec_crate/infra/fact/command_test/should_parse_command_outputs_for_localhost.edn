@@ -1,0 +1,23 @@
+{:input
+ "find--absent
+find: \"/absent\": Datei oder Verzeichnis nicht gefunden
+1
+----- command output separator -----
+echo--Hallo-Welt-
+Hallo Welt
+0
+----- command output separator -----
+echo--Hallo-Welt---echo--second-line-
+Hallo Welt
+second line
+0
+----- command output separator -----
+"
+ :expected
+ {:find--absent
+  {:exit-code 1
+   :stdout
+   "find: \"/absent\": Datei oder Verzeichnis nicht gefunden"}
+  :echo--Hallo-Welt- {:exit-code 0, :stdout "Hallo Welt"}
+  :echo--Hallo-Welt---echo--second-line-
+  {:exit-code 0, :stdout "Hallo Welt\nsecond line"}}}

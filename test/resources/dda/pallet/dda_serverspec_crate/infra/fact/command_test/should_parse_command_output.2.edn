@@ -1,0 +1,2 @@
+{:input "echo--Hallo-Welt\nHallo Welt\n0\n"
+ :expected {:echo--Hallo-Welt {:exit-code 0, :stdout "Hallo Welt"}}}

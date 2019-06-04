@@ -1,0 +1,3 @@
+{:input "echo--Hallo-Welt---echo-second-line\nHallo Welt\nsecond-line\n0\n"
+ :expected {:echo--Hallo-Welt---echo-second-line
+            {:exit-code 0, :stdout "Hallo Welt\nsecond-line"}}}

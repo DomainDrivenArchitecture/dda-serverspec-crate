@@ -16,67 +16,21 @@
 
 (ns dda.pallet.dda-serverspec-crate.infra.fact.command-test
   (:require
-    [clojure.test :refer :all]
-    [pallet.actions :as actions]
-    [dda.pallet.dda-serverspec-crate.infra.fact.command :as sut]))
+   [clojure.test :refer :all]
+   [data-test :refer :all]
+   [dda.pallet.dda-serverspec-crate.infra.fact.command :as sut]))
 
-(def remote
-  {
-   :input
-   "find--absent
-find: ‘/absent‘: Datei oder Verzeichnis nicht gefunden
-2
------ command output separator -----
-"
-   :expected
-   {:find--absent
-    {:exit-code 2,
-     :stdout
-     "find: ‘/absent‘: Datei oder Verzeichnis nicht gefunden"}}})
+(defdatatest should-parse-command-outputs-for-remote [input expected]
+  (is (= expected
+         (sut/split-output input))))
 
-(def localhost
-  {:input
-   "find--absent
-find: \"/absent\": Datei oder Verzeichnis nicht gefunden
-1
------ command output separator -----
-echo--Hallo-Welt-
-Hallo Welt
-0
------ command output separator -----
-echo--Hallo-Welt---echo--second-line-
-Hallo Welt
-second line
-0
------ command output separator -----
-"
-   :expected
-   {:find--absent
-    {:exit-code 1,
-     :stdout
-     "find: \"/absent\": Datei oder Verzeichnis nicht gefunden"},
-    :echo--Hallo-Welt- {:exit-code 0, :stdout "Hallo Welt"},
-    :echo--Hallo-Welt---echo--second-line-
-    {:exit-code 0, :stdout "Hallo Welt\nsecond line"}}})
+(defdatatest should-parse-command-outputs-for-localhost [input expected]
+  (is (= expected
+         (sut/split-output input))))
 
-(deftest test-parse-command-outputs
-  (testing
-    (is (= (:expected remote)
-           (sut/split-output (:input remote))))
-    (is (= (:expected localhost)
-           (sut/split-output (:input localhost))))))
-
-(deftest test-parse-command-output
-  (testing
-    (is (= {:find--absent
-            {:exit-code 1,
-             :stdout "find: \"/absent\": Datei oder Verzeichnis nicht gefunden"}}
-           (sut/parse-command-output "find--absent\nfind: \"/absent\": Datei oder Verzeichnis nicht gefunden\n1\n")))
-    (is (= {:echo--Hallo-Welt {:exit-code 0, :stdout "Hallo Welt"}}
-           (sut/parse-command-output "echo--Hallo-Welt\nHallo Welt\n0\n")))
-    (is (= {:echo--Hallo-Welt---echo-second-line
-            {:exit-code 0, :stdout "Hallo Welt\nsecond-line"}}
-           (sut/parse-command-output "echo--Hallo-Welt---echo-second-line\nHallo Welt\nsecond-line\n0\n")))))
+(defdatatest should-parse-command-output [input expected]
+  (is (= expected
+         (sut/parse-command-output input))))
 
 (deftest test-command-to-keyword
   (testing

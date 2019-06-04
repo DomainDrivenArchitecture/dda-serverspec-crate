@@ -1,0 +1,4 @@
+{:input "find--absent\nfind: \"/absent\": Datei oder Verzeichnis nicht gefunden\n1\n"
+ :expected {:find--absent
+            {:exit-code 1
+             :stdout "find: \"/absent\": Datei oder Verzeichnis nicht gefunden"}}}
