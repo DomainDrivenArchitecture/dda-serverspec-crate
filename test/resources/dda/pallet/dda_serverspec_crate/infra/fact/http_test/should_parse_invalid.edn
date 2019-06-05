@@ -1,0 +1,6 @@
+{:input "_someinvalidurl\n* Rebuilt URL to: https://google.c/
+* Could not resolve host: google.c
+* Closing connection 0
+curl: (6) Could not resolve host: google.c
+"
+ :expected {:_someinvalidurl {:expiration-days -1}}}

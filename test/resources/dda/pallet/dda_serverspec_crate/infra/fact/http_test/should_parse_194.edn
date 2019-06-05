@@ -1,0 +1,170 @@
+{:input 
+ "https___domaindrivenarchitecture.org
+== Info: Rebuilt URL to: https://domaindrivenarchitecture.org/
+== Info:   Trying 195.201.136.96...
+== Info: TCP_NODELAY set
+== Info: Connected to domaindrivenarchitecture.org (195.201.136.96) port 443 (#0)
+== Info: ALPN, offering h2
+== Info: ALPN, offering http/1.1
+== Info: successfully set certificate verify locations:
+== Info:   CAfile: /etc/ssl/certs/ca-certificates.crt
+  CApath: /etc/ssl/certs
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (OUT), TLS handshake, Client hello (1):
+=> Send SSL data, 226 bytes (0xe2)
+0000: ......l.('..c......e.4...S|3....j.......8.,.0.........+./...$.(.
+0040: k.#.'.g.....9.....3.....=.<.5./.....}...!.....domaindrivenarchit
+0080: ecture.org......................3t.........h2.http/1.1..........
+00c0: . ................................
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....W
+== Info: TLSv1.2 (IN), TLS handshake, Server hello (2):
+<= Recv SSL data, 87 bytes (0x57)
+0000: ...S..[Q.....O$...........:...A......3 .v2..j.5...D~./.. 0......
+0040: ..:..va.0..............
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (IN), TLS handshake, Certificate (11):
+<= Recv SSL data, 2795 bytes (0xaeb)
+0000: .........H0..D0..,........c...=...q...6.V..0...*.H........0J1.0.
+0040: ..U....US1.0...U....Let's Encrypt1#0!..U....Let's Encrypt Author
+0080: ity X30...180525072726Z..180823072726Z0'1%0#..U....domaindrivena
+00c0: rchitecture.org0..\"0...*.H.............0.........w.*..,....1h...
+0100: bB.z..@.,U..8e\".+......M ..z...i7.(<>.U=....!.....\\..f.U%i\"x.._
+0140: X..p6.......b~..q{......}../.H'R.....uR..m........,K....U..`...
+0180: F...$~.....z..<....5.2..>.)A.' .nj...Z...:/........I.K..........
+01c0: ...S.!.-.((.....P..\"=E_..94.].o..F.O..>h6......?........E0..A0..
+0200: .U...........0...U.%..0...+.........+.......0...U.......0.0...U.
+0240: .....U.....BaU....*.q.l..0...U.#..0....Jjc.}....9..Ee.....0o..+.
+0280: .......c0a0...+.....0..\"http://ocsp.int-x3.letsencrypt.org0/..+.
+02c0: ....0..#http://cert.int-x3.letsencrypt.org/0I..U...B0@..domaindr
+0300: ivenarchitecture.org. www.domaindrivenarchitecture.org0....U. ..
+0340: .0..0...g.....0....+..........0..0&..+.........http://cps.letsen
+0380: crypt.org0....+.......0.....This Certificate may only be relied 
+03c0: upon by Relying Parties and only in accordance with the Certific
+0400: ate Policy found at https://letsencrypt.org/repository/0.....+..
+0440: ...y............v..t...)....>qm,....6..q..].O7...d...c.h.^.....G
+0480: 0E. .g.......Q=,^0...\\.$LK./.\\.U.V^y.!..kt....Ll\".27......N=....
+04c0: ...S=+..u.)<Q.T.9e..P.X...o.Xz)r......EG.x...c.h.......F0D. A..g
+0500: .!'...E.J...5..........N.|... D.....\".%{......-......k.....0y.0.
+0540: ..*.H.............TV.H.......TT..d.. .m....j.....#4Td.P.>.8LvmC.
+0580: .g.#.........K.t-_}...;..S>#yX/^G..[T)........r...C..j.k.......]
+05c0: ...^.b........e...!......W.....&&.!..|..$.o.B...R....t..r $|T..
+0600: ~.I...... K#.7G..5..j..3.%.`ld.._o..&.....K.`]......~7.r....%hcm
+0640: .70...r..+T./....q...0...0..z.........AB...S.sj.....0...*.H.....
+0680: ...0?1$0\"..U....Digital Signature Trust Co.1.0...U....DST Root C
+06c0: A X30...160317164046Z..210317164046Z0J1.0...U....US1.0...U....Le
+0700: t's Encrypt1#0!..U....Let's Encrypt Authority X30..\"0...*.H.....
+0740: ........0............Z..G.r]7..hc0..5&.%...5.p./..KA....5.X..*.h
+0780: ....u....bq.y.`.......xgq.i........`<H.~.Mw.$.G.Z....7....{....J
+07c0: ..A.6....m<.h.#*B...tg....Ra..?e.......V.....?.......k...}.+.e.
+0800: ..6u.k.J...Ix/..O* %)..t..1..18....3.C....0.y1.=-6....3j.91....
+0840: ..d.3...).....}..........}0..y0...U.......0.......0...U.........
+0880: ..0..+........s0q02..+.....0..&http://isrg.trustid.ocsp.identru
+08c0: st.com0;..+.....0../http://apps.identrust.com/roots/dstrootcax3.
+0900: p7c0...U.#..0.......{,q...K.u...`...0T..U. .M0K0...g.....0?..+..
+0940: ........000...+........\"http://cps.root-x1.letsencrypt.org0<..U.
+0980: ..50301./.-.+http://crl.identrust.com/DSTROOTCAX3CRL.crl0...U...
+09c0: ....Jjc.}....9..Ee.....0...*.H..............3...cX8.....U.vV.pH.
+0a00: iG'{.$...Z.J.)7$tQ.bh...pg....N(Q.........Z......j.j.>W#....b...
+0a40: ....?..H....eb..T..*. .........2...w..ye.+.(.:.R..R.._....3.wl.@
+0a80: .2...\\A.tl[]._3.M..8./{,b....o%./...F=.~..z...zm..%......./X../,
+0ac0: h&.K........CJ.DNosz(...n{L}.....D....4[.B
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....M
+== Info: TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+<= Recv SSL data, 333 bytes (0x14d)
+0000: ...I...A..;..\"P6.3...k.c..2...Y...,<....3r`.Z2..[..4
+0036: ..7...eV..F....&.S.....Z..P.\".>.J.B.a-g.1.+.5....w.6..E..W.%.B..
+0076: ....-.;..).l...-.K....*..s..'L./.h...9vE.n.yTo)Z.M.....t..oc..m.
+00b6: 0TV..7..]u.Oi.....1...}.b.x!....|.|j....B.MO..G.2f..;.......4..
+00f6: .@..]......8|.Kc...ku.hig..SU..Z<........L.d..../5.....-Xi.=u...
+0136: $....r....m..Y......m.M
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (IN), TLS handshake, Server finished (14):
+<= Recv SSL data, 4 bytes (0x4)
+0000: ....
+=> Send SSL data, 5 bytes (0x5)
+0000: ....F
+== Info: TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+=> Send SSL data, 70 bytes (0x46)
+0000: ...BA.l......d.,nE.W..7 .z..*.^l..-+.A.^. ..t....F_...K.[..\".\\.
+0040: .\"f.uy
+=> Send SSL data, 5 bytes (0x5)
+0000: .....
+== Info: TLSv1.2 (OUT), TLS change cipher, Client hello (1):
+=> Send SSL data, 1 bytes (0x1)
+0000: .
+=> Send SSL data, 5 bytes (0x5)
+0000: ....(
+== Info: TLSv1.2 (OUT), TLS handshake, Finished (20):
+=> Send SSL data, 16 bytes (0x10)
+0000: ........L..Tv..6
+<= Recv SSL data, 5 bytes (0x5)
+0000: .....
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....(
+== Info: TLSv1.2 (IN), TLS handshake, Finished (20):
+<= Recv SSL data, 16 bytes (0x10)
+0000: .............jU.
+== Info: SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+== Info: ALPN, server did not agree to a protocol
+== Info: Server certificate:
+== Info:  subject: CN=domaindrivenarchitecture.org
+== Info:  start date: May 25 07:27:26 2018 GMT
+== Info:  expire date: Aug 23 07:27:26 2018 GMT
+== Info:  issuer: C=US; O=Let's Encrypt; CN=Let's Encrypt Authority X3
+== Info:  SSL certificate verify ok.
+=> Send SSL data, 5 bytes (0x5)
+0000: ....u
+=> Send header, 93 bytes (0x5d)
+0000: HEAD / HTTP/1.1
+0011: Host: domaindrivenarchitecture.org
+0035: User-Agent: curl/7.58.0
+004e: Accept: */*
+005b: 
+<= Recv SSL data, 5 bytes (0x5)
+0000: ....t
+<= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+HTTP/1.1 200 OK
+<= Recv header, 37 bytes (0x25)
+0000: Date: Fri, 20 Jul 2018 11:55:09 GMT
+Date: Fri, 20 Jul 2018 11:55:09 GMT
+<= Recv header, 16 bytes (0x10)
+0000: Server: Apache
+Server: Apache
+<= Recv header, 46 bytes (0x2e)
+0000: Last-Modified: Mon, 02 Jul 2018 16:45:23 GMT
+Last-Modified: Mon, 02 Jul 2018 16:45:23 GMT
+<= Recv header, 28 bytes (0x1c)
+0000: ETag: \"3f04-57006ec842da8\"
+ETag: \"3f04-57006ec842da8\"
+<= Recv header, 22 bytes (0x16)
+0000: Accept-Ranges: bytes
+Accept-Ranges: bytes
+<= Recv header, 23 bytes (0x17)
+0000: Content-Length: 16132
+Content-Length: 16132
+<= Recv header, 23 bytes (0x17)
+0000: Vary: Accept-Encoding
+Vary: Accept-Encoding
+<= Recv header, 33 bytes (0x21)
+0000: X-Content-Type-Options: nosniff
+X-Content-Type-Options: nosniff
+<= Recv header, 29 bytes (0x1d)
+0000: X-Frame-Options: sameorigin
+X-Frame-Options: sameorigin
+<= Recv header, 47 bytes (0x2f)
+0000: Access-Control-Allow-Origin: *.meissa-gmbh.de
+Access-Control-Allow-Origin: *.meissa-gmbh.de
+<= Recv header, 25 bytes (0x19)
+0000: Content-Type: text/html
+Content-Type: text/html
+<= Recv header, 2 bytes (0x2)
+0000: 
+== Info: Connection #0 to host domaindrivenarchitecture.org left intact
+----- http output separator -----"
+ :expected ""}

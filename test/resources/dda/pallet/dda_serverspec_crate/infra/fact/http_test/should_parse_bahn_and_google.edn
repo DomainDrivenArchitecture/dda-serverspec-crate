@@ -1,0 +1,43 @@
+{:input {:google
+         "https___google.com
+  * Rebuilt URL to: https://google.com/
+  *   Trying 216.58.207.46...
+  * Connected to google.com (216.58.207.46) port 443 (#0)
+  * found 148 certificates in /etc/ssl/certs/ca-certificates.crt
+  * found 597 certificates in /etc/ssl/certs
+  * ALPN, offering http/1.1
+  * SSL connection using TLS1.2 / ECDHE_ECDSA_AES_128_GCM_SHA256
+  * 	 server certificate verification OK
+  * 	 server certificate status verification SKIPPED
+  * 	 common name: *.google.com (matched)
+  * 	 server certificate expiration date OK
+  * 	 server certificate activation date OK
+  * 	 certificate public key: EC
+  * 	 certificate version: #3
+  * 	 subject: C=US,ST=California,L=Mountain View,O=Google Inc,CN=*.google.com
+  * 	 start date: Tue, 23 Jan 2018 13:36:00 GMT
+  * 	 expire date: Tue, 17 Apr 2018 13:36:00 GMT
+  * 	 issuer: C=US,O=Google Inc,CN=Google Internet Authority G2
+"
+         :bahn
+         "https___bahn.de
+* Rebuilt URL to: https://bahn.de/
+*   Trying 46.18.63.152...
+* Connected to bahn.de (46.18.63.152) port 443 (#0)
+* found 148 certificates in /etc/ssl/certs/ca-certificates.crt
+* found 597 certificates in /etc/ssl/certs
+* ALPN, offering http/1.1
+* SSL connection using TLS1.2 / ECDHE_RSA_AES_256_GCM_SHA384
+* 	 server certificate verification SKIPPED
+* 	 server certificate status verification SKIPPED
+* 	 common name: bahn.de (matched)
+* 	 server certificate expiration date OK
+* 	 server certificate activation date OK
+* 	 certificate public key: RSA
+* 	 certificate version: #3
+* 	 subject: C=DE,ST=Hessen,L=Frankfurt am Main,O=DB Systel GmbH,CN=bahn.de
+* 	 start date: Fri, 10 Mar 2017 00:00:00 GMT
+* 	 expire date: Sat, 7 Mar 2020 23:59:59 GMT
+* 	 issuer: C=US,O=Symantec Corporation,OU=Symantec Trust Network,CN=Symantec Class 3 Secure Server SHA256 SSL CA
+"}
+ :expected ""}

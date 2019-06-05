@@ -1,4 +1,4 @@
-{:meta {:issue "issue_11"}
+{:meta {:link "issue_11"}
  :input "find: '/root/.yarn': No such file or directory
 /usr/local/bin/packer'95984305'root'root'755'f''Tue Jun 26 09:50:45.7889129420 2018'Tue May 29 12:26:08.0000000000 2018'Tue May 29 12:26:08.0000000000 2018
 /usr/local/bin/aws'814'root'root'755'f''Tue Jun 26 09:50:39.7689119130 2018'Tue Jun 26 09:46:54.0000000000 2018'Tue Jun 26 09:46:54.0000000000 2018
