@@ -1,0 +1,38 @@
+{:input 
+   "Proto Recv-Q Send-Q Local Address           Foreign Address         State       User       Inode       PID/Program name
+   udp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      0          9807        1001/sshd
+   tcp6       0      0 :::80                   :::*                    LISTEN      0          44161       4135/apache2
+   tcp6       0      0 :::4369                 :::*                    LISTEN      108        33687       27416/epmd"
+ :expected [{:fact-foreign-adress "0.0.0.0:*"
+             :fact-port "22"
+             :fact-pid "1001"
+             :fact-inode "9807"
+             :fact-proto "udp"
+             :fact-ip "0.0.0.0"
+             :fact-recv-q "0"
+             :fact-process-name "sshd"
+             :fact-state "LISTEN"
+             :fact-send-q "0"
+             :fact-user "0"}
+            {:fact-foreign-adress ":::*"
+             :fact-port "80"
+             :fact-pid "4135"
+             :fact-inode "44161"
+             :fact-proto "tcp6"
+             :fact-ip "::"
+             :fact-recv-q "0"
+             :fact-process-name "apache2"
+             :fact-state "LISTEN"
+             :fact-send-q "0"
+             :fact-user "0"}
+            {:fact-foreign-adress ":::*"
+             :fact-port "4369"
+             :fact-pid "27416"
+             :fact-inode "33687"
+             :fact-proto "tcp6"
+             :fact-ip "::"
+             :fact-recv-q "0"
+             :fact-process-name "epmd"
+             :fact-state "LISTEN"
+             :fact-send-q "0"
+             :fact-user "108"}]}

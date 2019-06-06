@@ -17,36 +17,9 @@
 
 (ns dda.pallet.dda-serverspec-crate.infra.fact.netstat-test
   (:require
-    [clojure.test :refer :all]
-    [pallet.actions :as actions]
-    [dda.pallet.dda-serverspec-crate.infra.fact.netstat :as sut]))
-
-
-(def netstat-resource1
-  "Proto Recv-Q Send-Q Local Address           Foreign Address         State       User       Inode       PID/Program name
-   tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      0          9807        1001/sshd
-   tcp6       0      0 :::80                   :::*                    LISTEN      0          44161       4135/apache2
-   tcp6       0      0 :::4369                 :::*                    LISTEN      108        33687       27416/epmd")
-
-(def netstat-resource2
-  "Another line
-   Proto Recv-Q Send-Q Local Address           Foreign Address         State       User       Inode       PID/Program name
-   tcp6       0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      0          9807        1001/sshd
-   tcp6       0      0 :::80                   :::*                    LISTEN      0          44161       4135/apache2
-   tcp6       0      0 :::4369                 :::*                    LISTEN      108        33687       27416/epmd")
-
-(def netstat-resource3
-  "Proto Recv-Q Send-Q Local Address           Foreign Address         State       User       Inode       PID/Program name
-   udp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      0          9807        1001/sshd
-   tcp6       0      0 :::80                   :::*                    LISTEN      0          44161       4135/apache2
-   tcp6       0      0 :::4369                 :::*                    LISTEN      108        33687       27416/epmd")
-
-(def netstat-resource4
- " Proto Recv-Q Send-Q Local Address           Foreign Address         State       User       Inode       PID/Program name
-   tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      0          15304       1198/sshd
-   tcp6       0      0 :::22                   :::*                    LISTEN      0          15306       1198/sshd
-   udp        0      0 0.0.0.0:68              0.0.0.0:*                           0          13182       916/dhclient")
-
+   [clojure.test :refer :all]
+   [data-test :refer :all]
+   [dda.pallet.dda-serverspec-crate.infra.fact.netstat :as sut]))
 
 (deftest test-split-line
  (testing
@@ -64,20 +37,6 @@
             (count (sut/split-netstat-line (str "111111222222233333334444444444444444444:4444555555555555555555555555"
                                                 "666666666666777777777778888888888889999/00000000000")))))))
 
-
-
-(deftest test-parse
-  (testing
-    "test parsing netstat-output"
-      (is (= "sshd"
-             (:fact-process-name
-               (first (sut/parse-netstat netstat-resource1)))))
-      (is (= "sshd"
-             (:fact-process-name
-               (first (sut/parse-netstat netstat-resource2)))))
-      (is (= "sshd"
-             (:fact-process-name
-               (first (sut/parse-netstat netstat-resource3)))))
-      (is (= "dhclient"
-             (:fact-process-name
-               (nth (sut/parse-netstat netstat-resource4) 2))))))
+(defdatatest should-parse [input expected]
+  (is (= expected
+         (sut/parse-netstat input))))

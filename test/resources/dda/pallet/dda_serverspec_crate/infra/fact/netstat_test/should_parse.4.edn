@@ -1,0 +1,38 @@
+{:input 
+   " Proto Recv-Q Send-Q Local Address           Foreign Address         State       User       Inode       PID/Program name
+   tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      0          15304       1198/sshd
+   tcp6       0      0 :::22                   :::*                    LISTEN      0          15306       1198/sshd
+   udp        0      0 0.0.0.0:68              0.0.0.0:*                           0          13182       916/dhclient"
+ :expected [{:fact-foreign-adress "0.0.0.0:*"
+             :fact-port "22"
+             :fact-pid "1198"
+             :fact-inode "15304"
+             :fact-proto "tcp"
+             :fact-ip "0.0.0.0"
+             :fact-recv-q "0"
+             :fact-process-name "sshd"
+             :fact-state "LISTEN"
+             :fact-send-q "0"
+             :fact-user "0"}
+            {:fact-foreign-adress ":::*"
+             :fact-port "22"
+             :fact-pid "1198"
+             :fact-inode "15306"
+             :fact-proto "tcp6"
+             :fact-ip "::"
+             :fact-recv-q "0"
+             :fact-process-name "sshd"
+             :fact-state "LISTEN"
+             :fact-send-q "0"
+             :fact-user "0"}
+            {:fact-foreign-adress "0.0.0.0:*"
+             :fact-port "68"
+             :fact-pid "916"
+             :fact-inode "13182"
+             :fact-proto "udp"
+             :fact-ip "0.0.0.0"
+             :fact-recv-q "0"
+             :fact-process-name "dhclient"
+             :fact-state ""
+             :fact-send-q "0"
+             :fact-user "0"}]}
