@@ -18,6 +18,7 @@
   (:require
    [clojure.string :as string]
    [clojure.test :refer :all]
+   [data-test :refer :all]
    [clojure.test.check :as tc]
    [clojure.test.check.generators :as gen]
    [clojure.test.check.properties :as prop]
@@ -50,25 +51,6 @@
     "test parsing iproute output"
     (is (:result (tc/quick-check 10 prop-ipv4-parsing)))))
 
-; ------------------------  test sample  ------------------------
-
-(def script-output1
-  "151_101_129_69
-151.101.129.69 via 10.0.2.2 dev enp0s3 src 10.0.2.15 uid 0
-  cache")
-
-(def fact1
-  {:151_101_129_69 {:via "10.0.2.2" :dev "enp0s3" :src "10.0.2.15"}})
-
-(def script-output-ipv6
-  "2a00_1450_4001_825__200e
-  2a00:1450:4001:825::200e via fe80::ea4:2ff:fe8a:d801 dev ppp0  proto kernel  src 2a02:2698:424:3125::1  metric 1024  mtu 1492 advmss 1432 hoplimit 64")
-
-(def fact-ipv6
-  {:2a00_1450_4001_825__200e {:via "fe80::ea4:2ff:fe8a:d801" :dev "ppp0" :src "2a02:2698:424:3125::1"}})
-
-(deftest test-parse
-  (testing
-    "test parsing iproute output"
-    (is (= fact1 (sut/parse-iproute-response script-output1)))
-    (is (= fact-ipv6 (sut/parse-iproute-response script-output-ipv6)))))
+(defdatatest should-parse [input expected]
+  (is (= expected
+         (sut/parse-iproute-response input))))
