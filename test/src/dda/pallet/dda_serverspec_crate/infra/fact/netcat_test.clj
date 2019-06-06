@@ -13,11 +13,10 @@
 ; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
-
 (ns dda.pallet.dda-serverspec-crate.infra.fact.netcat-test
   (:require
    [clojure.test :refer :all]
-   [pallet.actions :as actions]
+   [data-test :refer :all]
    [dda.pallet.dda-serverspec-crate.infra.fact.netcat :as sut]))
 
 ; ------------------------  test data  ------------------------
@@ -42,76 +41,17 @@ nc: getaddrinfo: Name or service not known
     netcat-yahoo
     sut/output-separator))
 
-(def real-script-example1
-  {:in
-   "tools-watchdog-0.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----
-tools-watchdog-1.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----
-app-watchdog-0.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----
-app-watchdog-1.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----
-app-watchdog-2.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----
-app-watchdog-0.dep.prod.organization.de_22_8
-0
------ dda-pallet netcat output separator -----
-app-watchdog-1.dep.prod.organization.de_22_8
-0
------ dda-pallet netcat output separator -----"
-   :out
-   {:tools-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true},
-    :tools-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true},
-    :app-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true},
-    :app-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true},
-    :app-watchdog-2.dep.dev.organization.de_22_8 {:reachable? true},
-    :app-watchdog-0.dep.prod.organization.de_22_8 {:reachable? true},
-    :app-watchdog-1.dep.prod.organization.de_22_8 {:reachable? true}}})
-
-(def real-script-example2
-  {:in
-   "FACT_START
-tools-watchdog-0.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----tools-watchdog-1.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----app-watchdog-0.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----app-watchdog-1.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----app-watchdog-2.dep.dev.organization.de_22_8
-0
------ dda-pallet netcat output separator -----app-watchdog-0.dep.prod.organization.de_22_8
-0
------ dda-pallet netcat output separator -----app-watchdog-1.dep.prod.organization.de_22_8
-0
------ dda-pallet netcat output separator -----FACT_END"
-   :out
-   {:tools-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true},
-    :tools-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true},
-    :app-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true},
-    :app-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true},
-    :app-watchdog-2.dep.dev.organization.de_22_8 {:reachable? true},
-    :app-watchdog-0.dep.prod.organization.de_22_8 {:reachable? true},
-    :app-watchdog-1.dep.prod.organization.de_22_8 {:reachable? true}}})
-
 ; ------------------------  tests  ------------------------------
-(deftest test-parse-single-results
-  (testing
-   (is (:reachable? (val (first (sut/parse-result netcat-google)))))
-   (is (not (:reachable? (val (first (sut/parse-result netcat-yahoo))))))
-   (is (= "www.bing.org_80_1" (name (key (first (sut/parse-result netcat-bing))))))))
-
-(deftest test-parse-script-results
+(deftest should-parse-synthetic-results
+  (testing "parse single outputs"
+    (is (:reachable? (val (first (sut/parse-result netcat-google)))))
+    (is (not (:reachable? (val (first (sut/parse-result netcat-yahoo))))))
+    (is (= "www.bing.org_80_1" (name (key (first (sut/parse-result netcat-bing)))))))
   (testing
    "test parsing netcat output"
     (is (= 4
-           (count (keys (sut/parse-netcat script-results)))))
-    (is (= (:out real-script-example1)
-           (sut/parse-netcat (:in real-script-example1))))))
+           (count (keys (sut/parse-netcat script-results)))))))
+
+(defdatatest should-parse-real-script-results [input expected]
+  (is (= expected
+         (sut/parse-netcat input))))

@@ -1,0 +1,29 @@
+{:input 
+ "tools-watchdog-0.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+tools-watchdog-1.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-0.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-1.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-2.dep.dev.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-0.dep.prod.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----
+app-watchdog-1.dep.prod.organization.de_22_8
+0
+----- dda-pallet netcat output separator -----"
+ :expected {:tools-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true}
+            :tools-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true}
+            :app-watchdog-0.dep.dev.organization.de_22_8 {:reachable? true}
+            :app-watchdog-1.dep.dev.organization.de_22_8 {:reachable? true}
+            :app-watchdog-2.dep.dev.organization.de_22_8 {:reachable? true}
+            :app-watchdog-0.dep.prod.organization.de_22_8 {:reachable? true}
+            :app-watchdog-1.dep.prod.organization.de_22_8 {:reachable? true}}}
