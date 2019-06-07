@@ -1,0 +1,32 @@
+{:meta {:link "issue_12"}
+ :input 
+ "Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                                  Version                                  Architecture Description
++++-=====================================-========================================-============-===============================================================================
+ii  openjdk-8-jdk: 8u171-b11-0u amd64        OpenJDK Development Kit (JDK)
+ii  openjdk-8-jdk- 8u171-b11-0u amd64        OpenJDK Development Kit (JDK) (he
+ii  openjdk-8-jre: 8u171-b11-0u amd64        OpenJDK Java runtime, using Hotsp
+ii  openjdk-8-jre- 8u171-b11-0u amd64        OpenJDK Java runtime, using Hotsp
+"
+ :expected [{:state "ii"
+             :package "openjdk-8-jdk"
+             :version "8u171-b11-0u"
+             :arch "amd64"
+             :desc "OpenJDK"}
+            {:state "ii"
+             :package "openjdk-8-jdk-"
+             :version "8u171-b11-0u"
+             :arch "amd64"
+             :desc "OpenJDK"}
+            {:state "ii"
+             :package "openjdk-8-jre"
+             :version "8u171-b11-0u"
+             :arch "amd64"
+             :desc "OpenJDK"}
+            {:state "ii"
+             :package "openjdk-8-jre-"
+             :version "8u171-b11-0u"
+             :arch "amd64"
+             :desc "OpenJDK"}]}

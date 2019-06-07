@@ -1,0 +1,32 @@
+{:meta {:name "package-resource-wo-password"}
+ :input
+ "Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                                  Version                                  Architecture Description
++++-=====================================-========================================-============-===============================================================================
+ii  accountsservice                       0.6.40-2ubuntu11.3                       amd64        query and manipulate user account information
+ii  acl                                   2.2.52-3                                 amd64        Access control list utilities
+ii  acpid                                 1:2.0.26-1ubuntu2                        amd64        Advanced Configuration and Power Interface event daemon
+ii  adduser                               3.113+nmu3ubuntu4                        all          add and remove users and groups
+"
+ :expected [{:state "ii"
+             :package "accountsservice"
+             :version "0.6.40-2ubuntu11.3"
+             :arch "amd64"
+             :desc "query"}
+            {:state "ii"
+             :package "acl"
+             :version "2.2.52-3"
+             :arch "amd64"
+             :desc "Access"}
+            {:state "ii"
+             :package "acpid"
+             :version "1:2.0.26-1ubuntu2"
+             :arch "amd64"
+             :desc "Advanced"}
+            {:state "ii"
+             :package "adduser"
+             :version "3.113+nmu3ubuntu4"
+             :arch "all"
+             :desc "add"}]}

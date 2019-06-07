@@ -13,43 +13,12 @@
 ; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
-
-
 (ns dda.pallet.dda-serverspec-crate.infra.fact.package-test
   (:require
-    [clojure.test :refer :all]
-    [dda.pallet.dda-serverspec-crate.infra.fact.package :as sut]))
+   [clojure.test :refer :all]
+   [data-test :refer :all]
+   [dda.pallet.dda-serverspec-crate.infra.fact.package :as sut]))
 
-
-(def package-resource-wo-password "Desired=Unknown/Install/Remove/Purge/Hold
-| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
-|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
-||/ Name                                  Version                                  Architecture Description
-+++-=====================================-========================================-============-===============================================================================
-ii  accountsservice                       0.6.40-2ubuntu11.3                       amd64        query and manipulate user account information
-ii  acl                                   2.2.52-3                                 amd64        Access control list utilities
-ii  acpid                                 1:2.0.26-1ubuntu2                        amd64        Advanced Configuration and Power Interface event daemon
-ii  adduser                               3.113+nmu3ubuntu4                        all          add and remove users and groups
-")
-
-(def package-resource-w-password "[sudo] Passwort für initial: Desired=Unknown/Install/Remove/Purge/Hold
-| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
-|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
-||/ Name           Version      Architecture Description
-+++-==============-============-============-=================================
-ii  accountsservic 0.6.45-1ubun amd64        query and manipulate user account
-ii  acl            2.2.52-3buil amd64        Access control list utilities
-ii  acpi-support   0.142        amd64        scripts for handling many ACPI ev
-ii  acpid          1:2.0.28-1ub amd64        Advanced Configuration and Power
-ii  adduser        3.116ubuntu1 all          add and remove users and groups
-")
-
-(deftest test-parse
-  (testing
-    "test parsing packages-output"
-      (is (= "accountsservice"
-             (:package
-               (first (sut/parse-package package-resource-wo-password)))))
-      (is (= "accountsservic"
-             (:package
-               (first (sut/parse-package package-resource-w-password)))))))
+(defdatatest should-parse [input expected]
+  (is (= expected
+         (sut/parse-package input))))

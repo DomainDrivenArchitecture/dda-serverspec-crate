@@ -1,0 +1,38 @@
+{:meta {:name "package-resource-w-password"}
+ :input 
+ "[sudo] Passwort für initial: Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version      Architecture Description
++++-==============-============-============-=================================
+ii  accountsservic 0.6.45-1ubun amd64        query and manipulate user account
+ii  acl            2.2.52-3buil amd64        Access control list utilities
+ii  acpi-support   0.142        amd64        scripts for handling many ACPI ev
+ii  acpid          1:2.0.28-1ub amd64        Advanced Configuration and Power
+ii  adduser        3.116ubuntu1 all          add and remove users and groups
+"
+ :expected [{:state "ii"
+             :package "accountsservic"
+             :version "0.6.45-1ubun"
+             :arch "amd64"
+             :desc "query"}
+            {:state "ii"
+             :package "acl"
+             :version "2.2.52-3buil"
+             :arch "amd64"
+             :desc "Access"}
+            {:state "ii"
+             :package "acpi-support"
+             :version "0.142"
+             :arch "amd64"
+             :desc "scripts"}
+            {:state "ii"
+             :package "acpid"
+             :version "1:2.0.28-1ub"
+             :arch "amd64"
+             :desc "Advanced"}
+            {:state "ii"
+             :package "adduser"
+             :version "3.116ubuntu1"
+             :arch "all"
+             :desc "add"}]}
