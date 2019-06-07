@@ -1,0 +1,5 @@
+{:input {:fact-result {:primary_crt {:expiration-days 20}
+                       :nonvalid_crt {:expiration-days 20}}
+         :test-config {}}
+ 
+ :expected 0}

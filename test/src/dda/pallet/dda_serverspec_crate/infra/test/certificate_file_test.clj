@@ -16,33 +16,11 @@
 
 (ns dda.pallet.dda-serverspec-crate.infra.test.certificate-file-test
   (:require
-    [clojure.test :refer :all]
-    [pallet.actions :as actions]
-    [dda.pallet.dda-serverspec-crate.infra.test.certificate-file :as sut]))
+   [clojure.test :refer :all]
+   [data-test :refer :all]
+   [dda.pallet.dda-serverspec-crate.infra.test.certificate-file :as sut]))
 
-; -----------------------  test data  --------------------------
-(def test-config-1 {:primary_crt {:expiration-days 10}
-                    :nonvalid_crt {:expiration-days 20}})
-
-(def test-config-2 {:primary_crt {:expiration-days 20}
-                    :nonvalid_crt {:expiration-days 21}})
-
-(def test-config-3 {:primary_crt {:expiration-days 30}
-                    :nonvalid_crt {:expiration-days 30}})
-
-(def fact-result
-  {:primary_crt {:expiration-days 20}
-   :nonvalid_crt {:expiration-days 20}})
-
-; -----------------------  tests  --------------------------
-(deftest test-certificate-file-internal
- (testing
-   "test test-certificate-file-internal"
-    (is (= 0
-          (:no-failed (sut/test-certificate-file-internal {} fact-result))))
-    (is (= 0
-          (:no-failed (sut/test-certificate-file-internal test-config-1 fact-result))))
-    (is (= 1
-          (:no-failed (sut/test-certificate-file-internal test-config-2 fact-result))))
-    (is (= 2
-          (:no-failed (sut/test-certificate-file-internal test-config-3 fact-result))))))
+(defdatatest should-find-certificate-file-fails [input expected]
+  (is (= expected
+         (:no-failed (sut/test-certificate-file-internal 
+                      (:test-config input) (:fact-result input))))))
