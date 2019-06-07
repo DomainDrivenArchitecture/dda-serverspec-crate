@@ -1,0 +1,9 @@
+{:input {:fact-result {:echo--Hallo-World- {:exit-code 0
+                                            :stdout "Hallo World"}}
+         :test-config {:echo--Hallo-World- {:exit-code 0
+                                            :stdout "HalloWorld"}}}
+ :expected {:test-passed false
+            :test-message "test command: echo--Hallo-World-, expected:: exit-code: 0, stdout: HalloWorld, found facts:: exit-code: 0, stdout: Hallo World - passed?: false\n"
+            :no-passed 0, :no-failed 1
+            :input {:echo--Hallo-World- {:exit-code 0, :stdout "Hallo World"}}
+            :summary "FAILED, tests failed: 1, tests passed: 0"}}
