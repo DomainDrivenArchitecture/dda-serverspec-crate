@@ -1,0 +1,11 @@
+{:input {:fact-result {:www.google.com_80_1 {:reachable? true}
+                       :www.yahoo.org_80_1 {:reachable? true}}
+         :test-config {}}
+ :expected {:test-passed true
+            :test-message ""
+            :no-passed 0
+            :no-failed 0
+            :input
+            {:www.google.com_80_1 {:reachable? true}
+             :www.yahoo.org_80_1 {:reachable? true}}
+            :summary "PASSED, tests failed: 0, tests passed: 0"}}

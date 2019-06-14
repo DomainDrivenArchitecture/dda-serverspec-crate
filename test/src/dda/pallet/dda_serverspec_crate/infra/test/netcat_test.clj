@@ -17,39 +17,9 @@
 (ns dda.pallet.dda-serverspec-crate.infra.test.netcat-test
   (:require
    [clojure.test :refer :all]
-   [pallet.actions :as actions]
+   [data-test :refer :all]
    [dda.pallet.dda-serverspec-crate.infra.test.netcat :as sut]))
 
-(def netcat-yahgo-1
-  {:www.google.com_80_1 {:reachable? true}
-   :www.yahoo.org_80_1 {:reachable? true}})
-
-(def netcat-yahgo-2
-  {:www.google.com_80_1 {:reachable? true}
-   :www.yahoo.org_80_1 {:reachable? false}})
-
-(def netcat-yahgo-3
-  {:www.google.com_80_1 {:reachable? false}
-   :www.yahoo.org_80_1 {:reachable? false}})
-
-(def netcat-yahgo-4
-  {:www.google.com_80_1 {:reachable? false}
-   :www.yahoo.org_80_1 {:reachable? true}})
-
-(def input
-  {:www.google.com_80_1 {:reachable? true}
-   :www.yahoo.org_80_1 {:reachable? true}})
-
-(deftest test-netcat-internal
-  (testing
-   "test test-netcat-internal"
-    (is (= 0
-           (:no-failed (sut/test-netcat-internal {} input))))
-    (is (= 0
-           (:no-failed (sut/test-netcat-internal netcat-yahgo-1 input))))
-    (is (= 1
-           (:no-failed (sut/test-netcat-internal netcat-yahgo-2 input))))
-    (is (= 2
-           (:no-failed (sut/test-netcat-internal netcat-yahgo-3 input))))
-    (is (= 1
-           (:no-failed (sut/test-netcat-internal netcat-yahgo-4 input))))))
+(defdatatest should-test-netcat [input expected]
+  (is (= expected
+         (sut/test-netcat-internal (:test-config input) (:fact-result input)))))

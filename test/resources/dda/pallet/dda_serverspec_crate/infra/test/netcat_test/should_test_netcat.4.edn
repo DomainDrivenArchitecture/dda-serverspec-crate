@@ -1,0 +1,13 @@
+{:input {:fact-result {:www.google.com_80_1 {:reachable? true}
+                       :www.yahoo.org_80_1 {:reachable? true}}
+         :test-config {:www.google.com_80_1 {:reachable? false}
+                       :www.yahoo.org_80_1 {:reachable? false}}}
+ :expected {:test-passed false
+            :test-message
+            "test host: www.google.com_80_1, expected:: reachable?: false - found facts:: reachable?: true - passed?: false\ntest host: www.yahoo.org_80_1, expected:: reachable?: false - found facts:: reachable?: true - passed?: false\n"
+            :no-passed 0
+            :no-failed 2
+            :input
+            {:www.google.com_80_1 {:reachable? true}
+             :www.yahoo.org_80_1 {:reachable? true}}
+            :summary "FAILED, tests failed: 2, tests passed: 0"}}
