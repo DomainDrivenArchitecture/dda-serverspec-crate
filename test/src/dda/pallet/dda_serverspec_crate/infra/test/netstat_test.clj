@@ -20,41 +20,6 @@
    [data-test :refer :all]
    [dda.pallet.dda-serverspec-crate.infra.test.netstat :as sut]))
 
-(def input
-  '({:fact-foreign-adress ":::*",
-     :fact-ip "::",
-     :fact-port "80",
-     :fact-recv-q "0",
-     :fact-inode "44161",
-     :fact-state "LISTEN",
-     :fact-process-name "apache2",
-     :fact-proto "tcp6",
-     :fact-pid "4135",
-     :fact-send-q "0",
-     :fact-user "0"}
-    {:fact-foreign-adress "0.0.0.0:*",
-     :fact-ip "0.0.0.0",
-     :fact-port "22",
-     :fact-recv-q "0",
-     :fact-inode "10289",
-     :fact-state "LISTEN",
-     :fact-process-name "sshd",
-     :fact-proto "tcp",
-     :fact-pid "974",
-     :fact-send-q "0",
-     :fact-user "0"}
-    {:fact-foreign-adress ":::*",
-     :fact-ip "::",
-     :fact-port "22",
-     :fact-recv-q "0",
-     :fact-inode "10289",
-     :fact-state "LISTEN",
-     :fact-process-name "sshd",
-     :fact-proto "tcp6",
-     :fact-pid "974",
-     :fact-send-q "0",
-     :fact-user "0"}))
-
 (defdatatest should-test-netstat [input expected]
   (is (= expected
          (sut/test-netstat-internal (:test-config input) (:fact-result input)))))

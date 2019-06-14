@@ -16,34 +16,10 @@
 
 (ns dda.pallet.dda-serverspec-crate.infra.test.package-test
   (:require
-    [clojure.test :refer :all]
-    [pallet.actions :as actions]
-    [dda.pallet.dda-serverspec-crate.infra.test.package :as sut]))
+   [clojure.test :refer :all]
+   [data-test :refer :all]
+   [dda.pallet.dda-serverspec-crate.infra.test.package :as sut]))
 
-
-(def test-config {:missing {:installed? true}
-                  :atom {:installed? true}
-                  :firefox {:installed? false}})
-
-(def input
-  '({:state "rc"
-     :package "firefox"
-     :version "0.6.40-2ubuntu11.3"
-     :arch "amd64"
-     :desc "xxx"}
-    {:state "ii"
-     :package "atom"
-     :version "0.6.40-2ubuntu11.3"
-     :arch "amd64"
-     :desc "xxx"}
-    {:state "ii"
-     :package "accountsservice"
-     :version "0.6.40-2ubuntu11.3"
-     :arch "amd64"
-     :desc "query and manipulate user account information"}))
-
-(deftest test-package-internal
-  (testing
-    "test test-package-internal"
-    (is (= 1
-           (:no-failed (sut/test-package-internal test-config input))))))
+(defdatatest should-test-package [input expected]
+  (is (= expected
+         (sut/test-package-internal (:test-config input) (:fact-result input)))))

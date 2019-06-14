@@ -1,0 +1,40 @@
+{:input {:fact-result [{:state "rc"
+                        :package "firefox"
+                        :version "0.6.40-2ubuntu11.3"
+                        :arch "amd64"
+                        :desc "xxx"}
+                       {:state "ii"
+                        :package "atom"
+                        :version "0.6.40-2ubuntu11.3"
+                        :arch "amd64"
+                        :desc "xxx"}
+                       {:state "ii"
+                        :package "accountsservice"
+                        :version "0.6.40-2ubuntu11.3"
+                        :arch "amd64"
+                        :desc "query and manipulate user account information"}]
+         :test-config {:missing {:installed? true}
+                       :atom {:installed? true}
+                       :firefox {:installed? false}}}
+ :expected {:test-passed false
+            :test-message
+            "test package: missing, expected:: installed?: true - found facts:: installed?: false - passed?: false\ntest package: atom, expected:: installed?: true - found facts:: installed?: true - passed?: true\ntest package: firefox, expected:: installed?: false - found facts:: installed?: false - passed?: true\n"
+            :no-passed 2
+            :no-failed 1
+            :input
+            [{:state "rc"
+              :package "firefox"
+              :version "0.6.40-2ubuntu11.3"
+              :arch "amd64"
+              :desc "xxx"}
+             {:state "ii"
+              :package "atom"
+              :version "0.6.40-2ubuntu11.3"
+              :arch "amd64"
+              :desc "xxx"}
+             {:state "ii"
+              :package "accountsservice"
+              :version "0.6.40-2ubuntu11.3"
+              :arch "amd64"
+              :desc "query and manipulate user account information"}]
+            :summary "FAILED, tests failed: 1, tests passed: 2"}}
