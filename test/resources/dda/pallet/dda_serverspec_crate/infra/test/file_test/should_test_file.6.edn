@@ -1,0 +1,21 @@
+{:input {:fact-result {:_etc_alink {:path "/etc/link" :fact-exist? true :fact-type "l" :fact-link-to "/etc/linktarget"}
+                       :_etc {:path "/etc" :fact-exist? true :fact-type "d" :fact-link-to ""}}
+         :test-config {:_etc_alink {:exist? true :type "l" :link-to "/etc/linktarget"}
+                       :_etc {:exist? true :type "d"}}}
+ :expected {:test-passed true
+            :test-message
+            "test file: _etc_alink, expected:: exists?: true, type: l, link-to: /etc/linktarget - found facts:: exist?: true, mod: , user: , group: , type: l, link-to: /etc/linktarget - passed?: true\ntest file: _etc, expected:: exists?: true, type: d - found facts:: exist?: true, mod: , user: , group: , type: d, link-to:  - passed?: true\n"
+            :no-passed 2
+            :no-failed 0
+            :input
+            {:_etc_alink
+             {:path "/etc/link"
+              :fact-exist? true
+              :fact-type "l"
+              :fact-link-to "/etc/linktarget"}
+             :_etc
+             {:path "/etc"
+              :fact-exist? true
+              :fact-type "d"
+              :fact-link-to ""}}
+            :summary "PASSED, tests failed: 0, tests passed: 2"}}

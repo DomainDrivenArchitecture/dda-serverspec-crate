@@ -1,0 +1,14 @@
+{:input {:fact-result {:_etc_hosts {:path "/etc/hosts" :fact-exist? true}
+                       :_root_.ssh_authorized_keys {:path "/root/.ssh/authorized_keys" :fact-exist? false}}
+         :test-config {:_etc_hosts {:exist? false}
+                       :_root_.ssh_authorized_keys {:exist? true}}}
+ :expected {:test-passed false
+            :test-message
+            "test file: _etc_hosts, expected:: exists?: false - found facts:: exist?: true, mod: , user: , group: , type: , link-to:  - passed?: false\ntest file: _root_.ssh_authorized_keys, expected:: exists?: true - found facts:: exist?: false - passed?: false\n"
+            :no-passed 0
+            :no-failed 2
+            :input
+            {:_etc_hosts {:path "/etc/hosts", :fact-exist? true}
+             :_root_.ssh_authorized_keys
+             {:path "/root/.ssh/authorized_keys", :fact-exist? false}}
+            :summary "FAILED, tests failed: 2, tests passed: 0"}}

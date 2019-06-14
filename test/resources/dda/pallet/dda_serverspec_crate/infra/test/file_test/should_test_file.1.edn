@@ -1,0 +1,12 @@
+{:input {:fact-result {:_etc_hosts {:path "/etc/hosts" :fact-exist? true}
+                       :_root_.ssh_authorized_keys {:path "/root/.ssh/authorized_keys" :fact-exist? false}}
+         :test-config {}}
+ :expected {:test-passed true
+            :test-message ""
+            :no-passed 0
+            :no-failed 0
+            :input
+            {:_etc_hosts {:path "/etc/hosts", :fact-exist? true}
+             :_root_.ssh_authorized_keys
+             {:path "/root/.ssh/authorized_keys", :fact-exist? false}}
+            :summary "PASSED, tests failed: 0, tests passed: 0"}}
