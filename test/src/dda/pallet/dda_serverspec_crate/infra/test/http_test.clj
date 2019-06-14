@@ -16,33 +16,11 @@
 
 (ns dda.pallet.dda-serverspec-crate.infra.test.http-test
   (:require
-    [clojure.test :refer :all]
-    [pallet.actions :as actions]
-    [dda.pallet.dda-serverspec-crate.infra.test.http :as sut]))
+   [clojure.test :refer :all]
+   [data-test :refer :all]
+   [dda.pallet.dda-serverspec-crate.infra.test.http :as sut]))
 
-; -----------------------  test data  --------------------------
-(def test-config-1 {:some_url {:expiration-days 10}
-                    :another_url {:expiration-days 20}})
-
-(def test-config-2 {:some_url {:expiration-days 20}
-                    :another_url {:expiration-days 21}})
-
-(def test-config-3 {:some_url {:expiration-days 30}
-                    :another_url {:expiration-days 30}})
-
-(def fact-result
-  {:some_url {:expiration-days 20}
-   :another_url {:expiration-days 20}})
-
-; -----------------------  tests  --------------------------
-(deftest test-http-internal
- (testing
-   "test test-http-internal"
-    (is (= 0
-          (:no-failed (sut/test-http-internal {} fact-result))))
-    (is (= 0
-          (:no-failed (sut/test-http-internal test-config-1 fact-result))))
-    (is (= 1
-          (:no-failed (sut/test-http-internal test-config-2 fact-result))))
-    (is (= 2
-          (:no-failed (sut/test-http-internal test-config-3 fact-result))))))
+(defdatatest should-test-http [input expected]
+    (is (= expected
+          (sut/test-http-internal (:test-config input) (:fact-result input))))
+)

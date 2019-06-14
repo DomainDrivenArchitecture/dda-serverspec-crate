@@ -1,0 +1,13 @@
+{:input {:fact-result {:some_url {:expiration-days 20}
+                       :another_url {:expiration-days 20}}
+         :test-config {:some_url {:expiration-days 10}
+                       :another_url {:expiration-days 20}}}
+ :expected {:test-passed true
+            :test-message
+            "test http: some_url, expected:: min expiration-days: 10 - found facts:: expiration-days: 20 - passed?: true\ntest http: another_url, expected:: min expiration-days: 20 - found facts:: expiration-days: 20 - passed?: true\n"
+            :no-passed 2
+            :no-failed 0
+            :input
+            {:some_url {:expiration-days 20}
+             :another_url {:expiration-days 20}}
+            :summary "PASSED, tests failed: 0, tests passed: 2"}}
