@@ -1,0 +1,76 @@
+{:input {:fact-result [{:fact-foreign-adress ":::*"
+                        :fact-ip "::"
+                        :fact-port "80"
+                        :fact-recv-q "0"
+                        :fact-inode "44161"
+                        :fact-state "LISTEN"
+                        :fact-process-name "apache2"
+                        :fact-proto "tcp6"
+                        :fact-pid "4135"
+                        :fact-send-q "0"
+                        :fact-user "0"}
+                       {:fact-foreign-adress "0.0.0.0:*"
+                        :fact-ip "0.0.0.0"
+                        :fact-port "22"
+                        :fact-recv-q "0"
+                        :fact-inode "10289"
+                        :fact-state "LISTEN"
+                        :fact-process-name "sshd"
+                        :fact-proto "tcp"
+                        :fact-pid "974"
+                        :fact-send-q "0"
+                        :fact-user "0"}
+                       {:fact-foreign-adress ":::*"
+                        :fact-ip "::"
+                        :fact-port "22"
+                        :fact-recv-q "0"
+                        :fact-inode "10289"
+                        :fact-state "LISTEN"
+                        :fact-process-name "sshd"
+                        :fact-proto "tcp6"
+                        :fact-pid "974"
+                        :fact-send-q "0"
+                        :fact-user "0"}]
+         :test-config{:not-running-service_0.0.0.1_11 {:port "11" :ip "0.0.0.1" :exp-proto "tcp" :running? true}
+                      :apache2_81 {:port "81" :ip "::" :exp-proto "tcp6" :running? true}
+                      :sshd_0.0.0.0_22 {:port "22" :ip "0.0.0.0" :exp-proto "tcp" :running? true}}}
+ :expected {:test-passed false
+            :test-message
+            "test netstat: not-running-service_0.0.0.1_11, expected:: running?: true, port: 11, ip: 0.0.0.1, protocol: tcp - found facts:: running?: false, port: , ip: , protocol  - passed?: false\ntest netstat: apache2_81, expected:: running?: true, port: 81, ip: ::, protocol: tcp6 - found facts:: running?: false, port: , ip: , protocol  - passed?: false\ntest netstat: sshd_0.0.0.0_22, expected:: running?: true, port: 22, ip: 0.0.0.0, protocol: tcp - found facts:: running?: true, port: 22, ip: 0.0.0.0, protocol tcp - passed?: true\n"
+            :no-passed 1
+            :no-failed 2
+            :input
+            [{:fact-foreign-adress ":::*"
+              :fact-port "80"
+              :fact-pid "4135"
+              :fact-inode "44161"
+              :fact-proto "tcp6"
+              :fact-ip "::"
+              :fact-recv-q "0"
+              :fact-process-name "apache2"
+              :fact-state "LISTEN"
+              :fact-send-q "0"
+              :fact-user "0"}
+             {:fact-foreign-adress "0.0.0.0:*"
+              :fact-port "22"
+              :fact-pid "974"
+              :fact-inode "10289"
+              :fact-proto "tcp"
+              :fact-ip "0.0.0.0"
+              :fact-recv-q "0"
+              :fact-process-name "sshd"
+              :fact-state "LISTEN"
+              :fact-send-q "0"
+              :fact-user "0"}
+             {:fact-foreign-adress ":::*"
+              :fact-port "22"
+              :fact-pid "974"
+              :fact-inode "10289"
+              :fact-proto "tcp6"
+              :fact-ip "::"
+              :fact-recv-q "0"
+              :fact-process-name "sshd"
+              :fact-state "LISTEN"
+              :fact-send-q "0"
+              :fact-user "0"}]
+            :summary "FAILED, tests failed: 2, tests passed: 1"}}
