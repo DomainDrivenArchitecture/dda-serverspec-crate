@@ -7,10 +7,6 @@ services:
 stages:
   - test
 
-env:
-  global:
-    - DOCKER_USERNAME: domaindrivenarchitecture
-
 jobs:
   include:
     - stage: test
