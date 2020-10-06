@@ -51,7 +51,8 @@
 (s/defn test-certificate-file-internal :- server-test/TestResultHuman
   "Exposing fact input to signature for tests."
   [test-config :- CertificateFileTestConfig
-   input :- {s/Keyword certificate-file-fact/CertificateFileFactResults}]
+   input :- {s/Keyword certificate-file-fact/CertificateFileFactResult}]
+  (println input)
   (let [fact-result (fact-check server-test/fact-check-seed test-config input)]
     (server-test/fact-result-to-test-result input fact-result)))
 
