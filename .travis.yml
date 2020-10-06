@@ -1,5 +1,12 @@
-dist: trusty
+dist: bionic
 language: clojure
+
+before_install:
+  - sudo apt-get -y install python3-pip python3-setuptools python3.6
+  - pip3 install pybuilder ddadevops deprecation python_terraform boto3
+addons:
+  apt:
+    update: true
 
 services:
   - docker
@@ -17,7 +24,7 @@ jobs:
         - sha256sum target/uberjar/dda-serverspec-standalone.jar > target/uberjar/dda-serverspec-standalone.jar.sha256
         - sha512sum target/uberjar/dda-serverspec-standalone.jar > target/uberjar/dda-serverspec-standalone.jar.sha512
         - # create docker image
-        - docker build -t dda-serverspec-crate --file integration/docker/image/Dockerfile .
+        - cd integration/docker/image && pyb image
       deploy:
         - provider: releases
           skip_cleanup: true
