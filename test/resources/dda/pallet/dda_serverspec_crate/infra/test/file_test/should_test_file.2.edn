@@ -1,14 +1,33 @@
-{:input {:fact-result {:_etc_hosts {:path "/etc/hosts" :fact-exist? true}
+{:input {:fact-result {:_etc_hosts {:path "/etc/hosts"
+                                    :fact-exist? true
+                                    :fact-created "1"
+                                    :fact-type "2"
+                                    :fact-accessed "3"
+                                    :fact-mod "4"
+                                    :fact-group "5"
+                                    :fact-modified "6"
+                                    :fact-user "7"
+                                    :fact-size-in-bytes 8
+                                    :fact-link-to "9"}
                        :_root_.ssh_authorized_keys {:path "/root/.ssh/authorized_keys" :fact-exist? false}}
          :test-config {:_etc_hosts {:exist? true}
                        :_root_.ssh_authorized_keys {:exist? false}}}
  :expected {:test-passed true
             :test-message
-            "test file: _etc_hosts, expected:: exists?: true - found facts:: exist?: true, mod: , user: , group: , type: , link-to:  - passed?: true\ntest file: _root_.ssh_authorized_keys, expected:: exists?: false - found facts:: exist?: false - passed?: true\n"
+            "test file: _etc_hosts, expected:: exists?: true - found facts:: exist?: true, mod: 4, user: 7, group: 5, type: 2, link-to: 9 - passed?: true\ntest file: _root_.ssh_authorized_keys, expected:: exists?: false - found facts:: exist?: false - passed?: true\n"
             :no-passed 2
             :no-failed 0
             :input
-            {:_etc_hosts {:path "/etc/hosts", :fact-exist? true}
+            {:_etc_hosts {:path "/etc/hosts", :fact-exist? true
+                          :fact-created "1"
+                          :fact-type "2"
+                          :fact-accessed "3"
+                          :fact-mod "4"
+                          :fact-group "5"
+                          :fact-modified "6"
+                          :fact-user "7"
+                          :fact-size-in-bytes 8
+                          :fact-link-to "9"}
              :_root_.ssh_authorized_keys
              {:path "/root/.ssh/authorized_keys", :fact-exist? false}}
             :summary "PASSED, tests failed: 0, tests passed: 2"}}
