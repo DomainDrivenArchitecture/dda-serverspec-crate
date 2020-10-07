@@ -1,10 +1,26 @@
-{:input {:fact-result {:_etc_alink {:path "/etc/link" :fact-exist? true :fact-type "l" :fact-link-to "/etc/linktarget"}
-                       :_etc {:path "/etc" :fact-exist? true :fact-type "d" :fact-link-to ""}}
+{:input {:fact-result {:_etc_alink {:path "/etc/link" :fact-exist? true
+                                    :fact-type "l" :fact-link-to "/etc/linktarget"
+                                    :fact-created "1"
+                                    :fact-accessed "3"
+                                    :fact-mod "4"
+                                    :fact-group "5"
+                                    :fact-modified "6"
+                                    :fact-user "7"
+                                    :fact-size-in-bytes 8}
+                       :_etc {:path "/etc" :fact-exist? true
+                              :fact-type "d" :fact-link-to ""
+                              :fact-created "1"
+                              :fact-accessed "3"
+                              :fact-mod "4"
+                              :fact-group "5"
+                              :fact-modified "6"
+                              :fact-user "7"
+                              :fact-size-in-bytes 8}}
          :test-config {:_etc_alink {:exist? true :type "l" :link-to "/etc/linktarget"}
                        :_etc {:exist? true :type "d"}}}
  :expected {:test-passed true
             :test-message
-            "test file: _etc_alink, expected:: exists?: true, type: l, link-to: /etc/linktarget - found facts:: exist?: true, mod: , user: , group: , type: l, link-to: /etc/linktarget - passed?: true\ntest file: _etc, expected:: exists?: true, type: d - found facts:: exist?: true, mod: , user: , group: , type: d, link-to:  - passed?: true\n"
+            "test file: _etc_alink, expected:: exists?: true, type: l, link-to: /etc/linktarget - found facts:: exist?: true, mod: 4, user: 7, group: 5, type: l, link-to: /etc/linktarget - passed?: true\ntest file: _etc, expected:: exists?: true, type: d - found facts:: exist?: true, mod: 4, user: 7, group: 5, type: d, link-to:  - passed?: true\n"
             :no-passed 2
             :no-failed 0
             :input
@@ -12,10 +28,24 @@
              {:path "/etc/link"
               :fact-exist? true
               :fact-type "l"
-              :fact-link-to "/etc/linktarget"}
+              :fact-link-to "/etc/linktarget"
+              :fact-created "1"
+              :fact-accessed "3"
+              :fact-mod "4"
+              :fact-group "5"
+              :fact-modified "6"
+              :fact-user "7"
+              :fact-size-in-bytes 8}
              :_etc
              {:path "/etc"
               :fact-exist? true
               :fact-type "d"
-              :fact-link-to ""}}
+              :fact-link-to ""
+              :fact-created "1"
+              :fact-accessed "3"
+              :fact-mod "4"
+              :fact-group "5"
+              :fact-modified "6"
+              :fact-user "7"
+              :fact-size-in-bytes 8}}
             :summary "PASSED, tests failed: 0, tests passed: 2"}}

@@ -1,12 +1,33 @@
-{:input {:fact-result {:_etc_hosts {:path "/etc/hosts" :fact-exist? true :fact-user "root" :fact-group "root" :fact-mod "644"}
-                       :_root_.ssh_authorized_keys {:path "/root/.ssh/authorized_keys" :fact-exist? true :fact-user "root" :fact-group "root" :fact-mod "644"}
-                       :_root_.profile {:path "/root/.profile" :fact-user "root" :fact-group "root" :fact-mod "644"}}
+{:input {:fact-result {:_etc_hosts {:path "/etc/hosts" :fact-exist? true
+                                    :fact-user "root" :fact-group "root" :fact-mod "644"
+                                    :fact-created "1"
+                                    :fact-type "2"
+                                    :fact-accessed "3"
+                                    :fact-modified "6"
+                                    :fact-size-in-bytes 8
+                                    :fact-link-to "9"}
+                       :_root_.ssh_authorized_keys {:path "/root/.ssh/authorized_keys" :fact-exist? true
+                                                    :fact-user "root" :fact-group "root" :fact-mod "644"
+                                                    :fact-created "1"
+                                                    :fact-type "2"
+                                                    :fact-accessed "3"
+                                                    :fact-modified "6"
+                                                    :fact-size-in-bytes 8
+                                                    :fact-link-to "9"}
+                       :_root_.profile {:path "/root/.profile" :fact-exist? true
+                                        :fact-user "root" :fact-group "root" :fact-mod "644"
+                                        :fact-created "1"
+                                        :fact-type "2"
+                                        :fact-accessed "3"
+                                        :fact-modified "6"
+                                        :fact-size-in-bytes 8
+                                        :fact-link-to "9"}}
          :test-config {:_etc_hosts {:exist? true :group "root"}
                        :_root_.ssh_authorized_keys {:exist? true :user "root"}
-                       :_root_.profile {:mod "654"}}}
+                       :_root_.profile {:exist? true :mod "654"}}}
  :expected {:test-passed false
             :test-message
-            "test file: _etc_hosts, expected:: exists?: true, group: root - found facts:: exist?: true, mod: 644, user: root, group: root, type: , link-to:  - passed?: true\ntest file: _root_.ssh_authorized_keys, expected:: exists?: true, user: root - found facts:: exist?: true, mod: 644, user: root, group: root, type: , link-to:  - passed?: true\ntest file: _root_.profile, expected:: exists?: , mod: 654 - found facts:: exist?: false - passed?: false\n"
+            "test file: _etc_hosts, expected:: exists?: true, group: root - found facts:: exist?: true, mod: 644, user: root, group: root, type: 2, link-to: 9 - passed?: true\ntest file: _root_.ssh_authorized_keys, expected:: exists?: true, user: root - found facts:: exist?: true, mod: 644, user: root, group: root, type: 2, link-to: 9 - passed?: true\ntest file: _root_.profile, expected:: exists?: true, mod: 654 - found facts:: exist?: true, mod: 644, user: root, group: root, type: 2, link-to: 9 - passed?: false\n",
             :no-passed 2
             :no-failed 1
             :input
@@ -15,16 +36,35 @@
               :fact-exist? true
               :fact-user "root"
               :fact-group "root"
-              :fact-mod "644"}
+              :fact-mod "644"
+              :fact-created "1"
+              :fact-type "2"
+              :fact-accessed "3"
+              :fact-modified "6"
+              :fact-size-in-bytes 8
+              :fact-link-to "9"}
              :_root_.ssh_authorized_keys
              {:path "/root/.ssh/authorized_keys"
               :fact-exist? true
               :fact-user "root"
               :fact-group "root"
-              :fact-mod "644"}
+              :fact-mod "644"
+              :fact-created "1"
+              :fact-type "2"
+              :fact-accessed "3"
+              :fact-modified "6"
+              :fact-size-in-bytes 8
+              :fact-link-to "9"}
              :_root_.profile
              {:path "/root/.profile"
+              :fact-exist? true
               :fact-user "root"
               :fact-group "root"
-              :fact-mod "644"}}
+              :fact-mod "644"
+              :fact-created "1"
+              :fact-type "2"
+              :fact-accessed "3"
+              :fact-modified "6"
+              :fact-size-in-bytes 8
+              :fact-link-to "9"}}
             :summary "FAILED, tests failed: 1, tests passed: 2"}}
