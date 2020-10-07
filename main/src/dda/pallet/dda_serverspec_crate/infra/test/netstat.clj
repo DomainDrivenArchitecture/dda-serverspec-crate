@@ -84,7 +84,7 @@
           considered-map))))
 
 (s/defn result-to-map
-  [input :- (seq netstat-fact/NetstatResult)]
+  [input :- netstat-fact/NetstatResults]
   (apply merge
           (into
             (map (fn [e] {(loose-service-key e) e}) input)
@@ -92,7 +92,7 @@
 
 (s/defn test-netstat-internal :- server-test/TestResultHuman
   [test-config :- NetstatTestConfig
-   input :- (seq netstat-fact/NetstatResult)]
+   input :- netstat-fact/NetstatResults]
   (let [considered-map (result-to-map input)
         fact-result (fact-check server-test/fact-check-seed test-config considered-map)]
     (server-test/fact-result-to-test-result input fact-result)))

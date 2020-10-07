@@ -7,11 +7,12 @@
                         :fact-process-name "sshd", :fact-send-q "0", :fact-user "0"}
                        {:fact-proto "udp", :fact-recv-q "0", :fact-send-q "0"
                         :fact-ip "0.0.0.0" :fact-port "68", :fact-foreign-adress "0.0.0.0:*"
-                        :fact-state "0", :fact-user "13122", :fact-inode "919", :fact-pid "dhclient"}]
-         :test-config {:sshd_22 {:port 22}}}
+                        :fact-state "0", :fact-user "13122", :fact-inode "919", :fact-pid "1202"
+                        :fact-process-name "dhclient"}]
+         :test-config {:sshd_22 {:port "22" :running? false}}}
  :expected {:test-passed false
             :test-message
-            "test netstat: sshd_22, expected:: running?: , port: 22 - found facts:: running?: true, port: 22, ip: ::, protocol tcp6 - passed?: false\n"
+            "test netstat: sshd_22, expected:: running?: false, port: 22 - found facts:: running?: true, port: 22, ip: ::, protocol tcp6 - passed?: false\n"
             :no-passed 0
             :no-failed 1
             :input
@@ -39,7 +40,8 @@
               :fact-user "0"}
              {:fact-foreign-adress "0.0.0.0:*"
               :fact-port "68"
-              :fact-pid "dhclient"
+              :fact-pid "1202"
+              :fact-process-name "dhclient"
               :fact-inode "919"
               :fact-proto "udp"
               :fact-ip "0.0.0.0"

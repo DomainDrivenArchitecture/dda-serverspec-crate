@@ -46,7 +46,7 @@
 
 (s/defn test-netcat-internal :- server-test/TestResultHuman
   [test-config :- NetcatTestConfig
-   input :- {s/Keyword netcat-fact/NetcatFactResults}]
+   input :- netcat-fact/NetcatFactResults]
   (let [fact-result (fact-check server-test/fact-check-seed test-config input)]
     (server-test/fact-result-to-test-result input fact-result)))
 

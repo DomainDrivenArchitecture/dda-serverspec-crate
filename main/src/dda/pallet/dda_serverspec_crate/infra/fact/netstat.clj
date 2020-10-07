@@ -23,17 +23,19 @@
 
 (def fact-id-netstat ::netstat)
 
-(def NetstatResult (seq {:fact-proto s/Str
-                         :fact-recv-q s/Str
-                         :fact-send-q s/Str
-                         :fact-ip s/Str
-                         :fact-port s/Str
-                         :fact-foreign-adress s/Str
-                         :fact-state s/Str
-                         :fact-user s/Str
-                         :fact-inode s/Str
-                         :fact-pid s/Str
-                         :fact-process-name s/Str}))
+(def NetstatResult {:fact-proto s/Str
+                    :fact-recv-q s/Str
+                    :fact-send-q s/Str
+                    :fact-ip s/Str
+                    :fact-port s/Str
+                    :fact-foreign-adress s/Str
+                    :fact-state s/Str
+                    :fact-user s/Str
+                    :fact-inode s/Str
+                    :fact-pid s/Str
+                    :fact-process-name s/Str})
+
+(def NetstatResults [NetstatResult])
 
 (s/defn split-netstat-line :- '(s/Str)
   [line :- s/Str]
