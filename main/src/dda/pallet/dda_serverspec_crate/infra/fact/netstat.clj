@@ -46,8 +46,8 @@
         [(subs line 0 6) (subs line 6 13) (subs line 13 20)
          (nth parsed-local-adress 1) (nth parsed-local-adress 2)
          (subs line 44 68) (subs line 68 80)
-         (subs line 80 91) (subs line 91 103)]
-        (cs/split (subs line 103) #"/")))))
+         (subs line 80 91) (subs line 91 102)]
+        (cs/split (subs line 102) #"[/:]")))))
 
 (defn parse-netstat
   [netstat-resource]

@@ -39,7 +39,8 @@
 (s/defn replace-comma :- s/Str [input :- s/Str]
   (clojure.string/replace input #"," "-"))
 
-(s/defn ^:always-validate config-to-string :- s/Str
+(s/defn ^:always-validate 
+        config-to-string :- s/Str
   [host :- s/Str port :- s/Num timeout :- s/Num]
   (str (replace-comma host)
        "_"

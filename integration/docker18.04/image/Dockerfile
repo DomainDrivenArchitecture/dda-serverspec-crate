@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:18.04
 
 # install ssh service to be tested by netstat
 RUN apt-get update && apt-get upgrade -y && apt-get install openssh-server -y > /dev/null

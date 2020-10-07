@@ -1,0 +1,30 @@
+{:meta {:name "output fur ubuntu20.04"
+        :description "there is a slight difference btwn inode & PID"}
+ :input 
+   "Proto Recv-Q Send-Q Local Address           Foreign Address         State       User       Inode      PID/Program name    
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      0          577556     224/sshd: /usr/sbin 
+tcp6       0      0 :::22                   :::*                    LISTEN      0          577558     224/sshd: /usr/sbin"
+ :expected [{
+             :fact-proto "tcp"
+             :fact-recv-q "0"
+             :fact-send-q "0"
+             :fact-ip "0.0.0.0"
+             :fact-port "22"
+             :fact-foreign-adress "0.0.0.0:*"
+             :fact-state "LISTEN"
+             :fact-user "0"
+             :fact-inode "577556"
+             :fact-pid "224"
+             :fact-process-name "sshd"
+             }
+            {:fact-foreign-adress ":::*"
+             :fact-port "22"
+             :fact-pid "224"
+             :fact-inode "577558"
+             :fact-proto "tcp6"
+             :fact-ip "::"
+             :fact-recv-q "0"
+             :fact-process-name "sshd"
+             :fact-state "LISTEN"
+             :fact-send-q "0"
+             :fact-user "0"}]}

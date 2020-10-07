@@ -3,7 +3,7 @@ from pybuilder.core import task, init
 from ddadevops import *
 import logging
 
-name = 'dda-serverspec'
+name = 'dda-serverspec-18.04'
 MODULE = 'image'
 PROJECT_ROOT_PATH = '../..'
 
@@ -21,8 +21,10 @@ def initialize(project):
         stage, PROJECT_ROOT_PATH, MODULE, dockerhub_user, dockerhub_password)
     build = MyBuild(project, config)
     build.initialize_build_dir()
+    run('cp -r ' + PROJECT_ROOT_PATH + '/integration/resources ' +
+        build.build_path() + '/' + MODULE, shell=True)
     run('cp ' + PROJECT_ROOT_PATH + '/target/uberjar/dda-serverspec-standalone.jar ' + 
-        build.build_path() + '/image/', shell=True)
+        build.build_path() + '/' + MODULE + '/', shell=True)
 
 @task
 def image(project):
