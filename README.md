@@ -22,7 +22,7 @@
 dda-pallet is compatible with the following versions
  * pallet 0.9
  * clojure 1.10
- * (x)ubunutu 20.04
+ * (x)ubunutu 18.04 / 20.04
 
 ## Features
 
