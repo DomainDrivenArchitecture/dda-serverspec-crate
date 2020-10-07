@@ -42,19 +42,19 @@
           (rest spec)
           considered-map))))
 
-(s/defn filter-input-to-consider :- package-fact/PackageResult
+(s/defn filter-input-to-consider :- package-fact/PackageResults
   [test-config :- PackageTestConfig
-   input :- (seq package-fact/PackageResult)]
+   input :- package-fact/PackageResults]
   (let [installed-to-consider (filter #(= "ii" (:state %)) input)]
     (filter #(contains? test-config (keyword (:package %))) installed-to-consider)))
 
 (s/defn result-to-map
-  [input :- (seq package-fact/PackageResult)]
+  [input :- package-fact/PackageResults]
   (apply merge (map (fn [e] {(keyword (:package e)) e}) input)))
 
 (s/defn test-package-internal :- server-test/TestResultHuman
   [test-config :- PackageTestConfig
-   input :- (seq package-fact/PackageResult)]
+   input :- package-fact/PackageResults]
   (let [input-to-consider (filter-input-to-consider test-config input)
         considered-map (result-to-map input-to-consider)
         fact-result (fact-check server-test/fact-check-seed test-config considered-map)]

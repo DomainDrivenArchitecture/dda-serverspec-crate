@@ -22,11 +22,13 @@
 
 (def fact-id-package ::package)
 
-(def PackageResult (seq {:state s/Str
-                         :package s/Str
-                         :version s/Str
-                         :arch s/Str
-                         :desc s/Str}))
+(def PackageResult {:state s/Str
+                    :package s/Str
+                    :version s/Str
+                    :arch s/Str
+                    :desc s/Str})
+
+(def PackageResults [PackageResult])
 
 (s/defn cut-off-header :- [s/Str]
   [script-result]
