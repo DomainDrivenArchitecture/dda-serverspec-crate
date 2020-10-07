@@ -25,7 +25,7 @@ jobs:
         - sha512sum target/uberjar/dda-serverspec-standalone.jar > target/uberjar/dda-serverspec-standalone.jar.sha512
         - # create docker image
         - cd integration/docker18.04 && pyb image
-        - cd integration/docker20.04 && pyb image
+        - cd ../../integration/docker20.04 && pyb image
       deploy:
         - provider: releases
           skip_cleanup: true
