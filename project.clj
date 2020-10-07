@@ -23,7 +23,6 @@
                     [org.slf4j/jcl-over-slf4j "1.8.0-beta4"]]
                    :plugins [[lein-sub "0.3.0"]
                              [lein-pprint "1.1.2"]]
-                   :repl-options {:init-ns dda.pallet.dda-serverspec-crate.app.instantiate-existing}
                    :leiningen/reply  {:dependencies [[org.slf4j/jcl-over-slf4j "1.8.0-alpha2"
                                                       :exclusions [commons-logging]]]}}
              :test {:test-paths ["test/src"]

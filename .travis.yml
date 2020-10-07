@@ -24,7 +24,7 @@ jobs:
         - sha256sum target/uberjar/dda-serverspec-standalone.jar > target/uberjar/dda-serverspec-standalone.jar.sha256
         - sha512sum target/uberjar/dda-serverspec-standalone.jar > target/uberjar/dda-serverspec-standalone.jar.sha512
         - # create docker image
-        - cd integration/docker/image && pyb image
+        - cd integration/docker && pyb image
       deploy:
         - provider: releases
           skip_cleanup: true

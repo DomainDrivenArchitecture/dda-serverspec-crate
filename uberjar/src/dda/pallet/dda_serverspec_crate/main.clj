@@ -42,7 +42,7 @@
     ""
     "test-spec-file"
     "  - follows the edn format."
-    "  - has to be a valid ServerTestDomainConfig (see: https://github.com/DomainDrivenArchitecture/dda-serverspec-crate)"
+    "  - has to be a valid ServerTestConventionConfig (see: https://github.com/DomainDrivenArchitecture/dda-serverspec-crate)"
     ""]))
 
 (defn -main [& args]
@@ -54,14 +54,14 @@
       (not= (count arguments) 1) (mh/exit 1 (usage summary))
       (:install-dependencies options) (if (core-app/existing-install
                                            app/crate-app
-                                           {:domain (first arguments)
+                                           {:convention (first arguments)
                                             :targets (:targets options)})
                                         (mh/exit-default-success)
                                         (mh/exit-default-error))
       :default (if (core-app/existing-serverspec
                     app/crate-app
-                    {:domain (first arguments)
-                      :targets (:targets options)
-                      :verbosity verbose})
+                    {:convention (first arguments)
+                     :targets (:targets options)
+                     :verbosity verbose})
                   (mh/exit 0 (styled/styled "ALL TESTS PASSED" :green))
                   (mh/exit 2 (styled/styled "SOME TESTS FAILED" :red))))))

@@ -13,7 +13,7 @@
 [Targets-config-example](#targets-config-example)  
 [Serverspec-config-example](#serverspec-config-example)  
 [Reference-Targets](#targets)  
-[Reference-Domain-API](#domain-api)  
+[Reference-Convention-API](#donvention-api)  
 [Reference-Infra-API](#infra-api)  
 [License](#license)
 
@@ -51,7 +51,7 @@ Facts are collected via ssh & bash. Test utils, needed, can be installed by usin
 ## Usage Summary
 
 1. **Download the jar-file** from the releases page of this repository (e.g. `curl -L -o dda-serverspec-standalone.jar https://github.com/DomainDrivenArchitecture/dda-serverspec-crate/releases/download/1.2.1/dda-serverspec-standalone.jar`)
-2. Create the files `serverspec.edn` (Domain-Schema for all your tests) and `target.edn` (Schema for Targets to be provisioned) according to the reference and our example configurations. Please create them in the same folder where you've saved the jar-file. For more information about these files refer to the corresponding information below.
+2. Create the files `serverspec.edn` (Convention-Schema for all your tests) and `target.edn` (Schema for Targets to be provisioned) according to the reference and our example configurations. Please create them in the same folder where you've saved the jar-file. For more information about these files refer to the corresponding information below.
 3. Start testing:
 ```bash
 java -jar dda-serverspec-standalone.jar --targets targets.edn serverspec.edn
@@ -113,17 +113,17 @@ In case any problems occur, you may want to have a look at the log-file:
 
 Some details about the architecture:
 * target: How targets can be specified
-* Domain-Level-API: The high level API with built-in conventions.
+* Convention-Level-API: The high level API with built-in conventions.
 * Infra-Level-API: If these conventions don't fit your needs, you can use our low-level API (infra) and easily realize your own conventions.
 
 ### Targets
 
 You can define provisioning targets using the [targets-schema](https://github.com/DomainDrivenArchitecture/dda-pallet-commons/blob/master/doc/existing_spec.md)
 
-### Domain API
+### Convention API
 
 You can use our conventions as a starting point:
-[see domain reference](doc/reference_domain.md)
+[see donvention reference](doc/reference_donvention.md)
 
 ### Infra API
 

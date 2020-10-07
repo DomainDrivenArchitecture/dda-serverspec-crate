@@ -1,0 +1,24 @@
+07/10/2020 13:13:33.463 [nRepl-session-e9350003-4f38-48d0-8430-0852366a7d62] WARN  logging$eval17328$fn__17333:286 - No 'expire date' found in the http response below:
+ * Rebuilt URL to: https://google.c/
+* Could not resolve host: google.c
+* Closing connection 0
+curl: (6) Could not resolve host: google.c
+
+07/10/2020 13:14:09.522 [nRepl-session-e9350003-4f38-48d0-8430-0852366a7d62] WARN  logging$eval17328$fn__17333:286 - No 'expire date' found in the http response below:
+ * Rebuilt URL to: https://google.c/
+* Could not resolve host: google.c
+* Closing connection 0
+curl: (6) Could not resolve host: google.c
+
+07/10/2020 13:15:02.977 [nRepl-session-e9350003-4f38-48d0-8430-0852366a7d62] WARN  logging$eval17328$fn__17333:286 - No 'expire date' found in the http response below:
+ * Rebuilt URL to: https://google.c/
+* Could not resolve host: google.c
+* Closing connection 0
+curl: (6) Could not resolve host: google.c
+
+07/10/2020 13:32:40.409 [main] WARN  logging$eval2606$fn__2611:286 - No 'expire date' found in the http response below:
+ * Rebuilt URL to: https://google.c/
+* Could not resolve host: google.c
+* Closing connection 0
+curl: (6) Could not resolve host: google.c
+

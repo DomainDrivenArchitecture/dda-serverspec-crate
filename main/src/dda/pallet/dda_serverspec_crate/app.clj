@@ -20,13 +20,14 @@
    [dda.pallet.core.app :as core-app]
    [dda.pallet.dda-config-crate.infra :as config-crate]
    [dda.pallet.dda-serverspec-crate.infra :as infra]
-   [dda.pallet.dda-serverspec-crate.domain :as domain]))
+   [dda.pallet.dda-serverspec-crate.convention :as convention]))
 
 (def with-serverspec infra/with-serverspec)
 
-(def InfraResult domain/InfraResult)
+(def InfraResult convention/InfraResult)
 
-(def ServerspecDomainConfig domain/ServerTestDomainConfig)
+(def ServerspecConventionConfig convention/ServerTestConventionConfig)
+(def ServerspecDomainConfig convention/ServerTestConventionConfig)
 
 (def ServerspecAppConfig
   {:group-specific-config
@@ -34,24 +35,24 @@
 
 (s/defn ^:always-validate
   app-configuration :- ServerspecAppConfig
-  [domain-config :- ServerspecDomainConfig
+  [convention-config :- ServerspecConventionConfig
    & options]
   (let [{:keys [group-key]
          :or  {group-key infra/facility}} options]
     {:group-specific-config
-       {group-key (domain/infra-configuration domain-config)}}))
+       {group-key (convention/infra-configuration convention-config)}}))
 
 (s/defmethod ^:always-validate
   core-app/group-spec infra/facility
   [crate-app
-   domain-config :- ServerspecDomainConfig]
-  (let [app-config (app-configuration domain-config)]
+   convention-config :- ServerspecConventionConfig]
+  (let [app-config (app-configuration convention-config)]
     (core-app/pallet-group-spec
       app-config [(config-crate/with-config app-config)
                   with-serverspec])))
 
 (def crate-app (core-app/make-dda-crate-app
                   :facility infra/facility
-                  :domain-schema ServerspecDomainConfig
-                  :domain-schema-resolved ServerspecDomainConfig
-                  :default-domain-file "serverspec.edn"))
+                  :convention-schema ServerspecConventionConfig
+                  :convention-schema-resolved ServerspecConventionConfig
+                  :default-convention-file "serverspec.edn"))

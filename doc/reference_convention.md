@@ -1,7 +1,7 @@
-### Domain-API
+### Convention-API
 The schema for the tests is:
 ```clojure
-(def IprouteDomainConfig (rough, exact schema has more strict dependent validations)
+(def IprouteConventionConfig (rough, exact schema has more strict dependent validations)
   (s/either {:ip ip-address-string
              (s/optional-key :via) ip-address-string
              (s/optional-key :src) ip-address-string
@@ -11,7 +11,7 @@ The schema for the tests is:
              (s/optional-key :src) ip-address-string})
              (s/optional-key :dev) s/Str)})
 
-(def ServerTestDomainConfig
+(def ServerTestConventionConfig
     {(s/optional-key :package) [{:name s/Str
                                  (s/optional-key :installed?) s/Bool}]
      (s/optional-key :netstat) [{:process-name s/Str
@@ -32,7 +32,7 @@ The schema for the tests is:
                                           :expiration-days s/Num}]  ;min days certificate must be valid
      (s/optional-key :http) [{:url s/Str                            ;full url e.g. http://google.com
                               :expiration-days s/Num}]              ;minimum days the certificate must be valid
-     (s/optional-key :iproute) [IprouteDomainConfig]
+     (s/optional-key :iproute) [IprouteConventionConfig]
      (s/optional-key :command) [{:cmd s/Str
                                  :exit-code s/Num
                                  (s/optional-key :stdout) s/Str}]})

@@ -14,11 +14,11 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 
-(ns dda.pallet.dda-serverspec-crate.domain-test
+(ns dda.pallet.dda-serverspec-crate.convention-test
   (:require
    [clojure.test :refer :all]
    [data-test :refer :all]
-   [dda.pallet.dda-serverspec-crate.domain :as sut]))
+   [dda.pallet.dda-serverspec-crate.convention :as sut]))
 
 (defdatatest should-create-infra-configuration [input expected]
     (is (= expected
