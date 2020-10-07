@@ -7,6 +7,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install openssh-server -y > 
 RUN apt-get install openjdk-11-jre -y > /dev/null
 
 COPY dda-serverspec-standalone.jar /app/dda-serverspec-standalone.jar
-COPY image/resources/* /app/
+COPY resources/* /app/
 
 RUN /app/test_it.sh
