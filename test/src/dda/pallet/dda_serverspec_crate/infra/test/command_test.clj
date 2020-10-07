@@ -23,4 +23,3 @@
   (is (= expected
          (sut/test-command-internal 
           (:test-config input) (:fact-result input)))))
-
