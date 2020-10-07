@@ -68,7 +68,7 @@
     (java.time.LocalDate/parse (preprocess-date-string date-string)
       (java.time.format.DateTimeFormatter/ofPattern date-format locale))))
 
-(s/defn parse-http-response :- HttpFactResult
+(s/defn parse-http-response :- HttpFactResults
   "returns a HttpFactResult from the result text of one http check"
   [single-script-result :- s/Str]
   (let [result-lines (string/split single-script-result #"\n" 2)
@@ -103,7 +103,7 @@
         {(keyword result-key) {:expiration-days expiration-days}}
         {(keyword result-key) {:expiration-days -1}}))))
 
-(s/defn parse-http-script-responses :- HttpFactResult
+(s/defn parse-http-script-responses :- HttpFactResults
   "returns a HttpFactResult from the result text of one http check"
   [raw-script-results :- s/Str]
   ()

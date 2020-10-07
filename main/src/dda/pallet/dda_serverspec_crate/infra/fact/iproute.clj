@@ -69,7 +69,7 @@
    "ip route get " ip " 2>&1;"
    "echo '" output-separator "'"))
 
-(s/defn parse-iproute-response :- IprouteFactResult
+(s/defn parse-iproute-response
   "returns a IprouteFactResult from the result of a gateway probe"
   [single-script-result :- s/Str]
   (let [[result-key result-text] (string/split single-script-result #"\n" 2)]

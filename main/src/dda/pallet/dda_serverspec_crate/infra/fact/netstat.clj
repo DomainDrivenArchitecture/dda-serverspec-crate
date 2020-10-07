@@ -37,7 +37,7 @@
 
 (def NetstatResults [NetstatResult])
 
-(s/defn split-netstat-line :- '(s/Str)
+(s/defn split-netstat-line :- [s/Str]
   [line :- s/Str]
   (let [local-address (subs line 20 44)
         parsed-local-adress (re-find (re-matcher #"(.+):(\d+)" local-address))]

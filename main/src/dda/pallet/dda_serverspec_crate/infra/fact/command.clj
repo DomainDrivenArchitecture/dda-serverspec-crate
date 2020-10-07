@@ -48,7 +48,7 @@
       {(keyword result-key) {:exit-code code
                              :stdout (string/join "\n" result-out)}}))
 
-(s/defn split-output :- CommandFactResult
+(s/defn split-output :- CommandFactResults
   [script-result]
   (apply merge
     (map parse-command-output

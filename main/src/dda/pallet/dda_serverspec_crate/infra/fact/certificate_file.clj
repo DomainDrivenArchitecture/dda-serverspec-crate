@@ -49,7 +49,7 @@
       " -noout -enddate | cut -d= -f 2)\" \"+%s\") - $(date \"+%s\") ) / 86400));"
       "echo -n '" output-separator "'")))
 
-(s/defn parse-certificate-response :- CertificateFileFactResult
+(s/defn parse-certificate-response :- CertificateFileFactResults
   "returns a CertificateFileFactResult from the result text of one certificate check"
   [single-script-result]
   (let [result-lines (string/split single-script-result #"\n")

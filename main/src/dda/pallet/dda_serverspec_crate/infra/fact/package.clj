@@ -35,15 +35,15 @@
   (drop-while #(re-matches #"\s*(\[sudo\]|Desired|\||\+).*" %)
     (st/split-lines script-result)))
 
-(s/defn zipmap-packages :- PackageResult
-  [result-lines :- s/Str]
+(s/defn zipmap-packages :- PackageResults
+  [result-lines :- [s/Str]]
   (map #(zipmap
           [:state :package :version :arch :desc]
           (st/split % #"\s+|/"))
        result-lines))
 
-(s/defn remove-arch-from-name :- PackageResult
-  [result-maps :- PackageResult]
+(s/defn remove-arch-from-name :- PackageResults
+  [result-maps :- PackageResults]
   (map
     (fn [e] (do
               (update-in
@@ -51,7 +51,7 @@
                 (fn [f] (first (st/split f #":"))))))
     result-maps))
 
-(s/defn parse-package :- PackageResult
+(s/defn parse-package :- PackageResults
   [script-result]
   (-> script-result
       cut-off-header
