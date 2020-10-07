@@ -9,4 +9,4 @@ RUN apt-get install openjdk-11-jre -y > /dev/null
 COPY dda-serverspec-standalone.jar /app/dda-serverspec-standalone.jar
 COPY resources/* /app/
 
-#RUN /app/test_it.sh
+RUN /app/test_it.sh
