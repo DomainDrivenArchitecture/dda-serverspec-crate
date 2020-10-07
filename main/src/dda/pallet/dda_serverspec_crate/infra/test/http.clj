@@ -51,7 +51,7 @@
 (s/defn test-http-internal :- server-test/TestResultHuman
   "Exposing fact input to signature for tests."
   [test-config :- HttpTestConfig
-   input :- {s/Keyword http-fact/HttpFactResults}]
+   input :- {s/Keyword http-fact/HttpFactResult}]
   (let [fact-result (fact-check server-test/fact-check-seed test-config input)]
     (server-test/fact-result-to-test-result input fact-result)))
 
