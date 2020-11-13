@@ -26,6 +26,7 @@ jobs:
         - # create docker image
         - cd integration/docker18.04 && pyb image
         - cd ../../integration/docker20.04 && pyb image
+        - cd ../..
       deploy:
         - provider: releases
           skip_cleanup: true
